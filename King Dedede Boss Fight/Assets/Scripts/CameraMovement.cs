@@ -7,8 +7,8 @@ public class CameraMovement : MonoBehaviour
     UIManager ui;
     //BossAttacks boss;
     AudioSource audio;
-    [SerializeField] Camera camera;
-    [SerializeField] GameObject kirby;
+    [SerializeField] private Camera camera;
+    [SerializeField] private GameObject kirby;
     public bool isFollowing = true; //if the camera is following kirby
     private bool firstTime = false;
 
@@ -39,7 +39,7 @@ public class CameraMovement : MonoBehaviour
             //if kirby enters the trigger where the boss area is, initiate the boss fight and lock the camera position 
             isFollowing = false;
             ui.bossBarVisible = true;
-            camera.transform.position = transform.position;
+            camera.transform.position = new Vector3(0,0,-10);
 
             if(!firstTime)
             {
