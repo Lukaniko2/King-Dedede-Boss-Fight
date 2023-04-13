@@ -22,8 +22,10 @@ MonoBehaviour:
   maxJumpHoldPuff: 0.1
   jumpPuffForce: 1.8
   suckSpeed: 0.8
-  maxHealth: 100
   kirbyDamageShieldingDivider: 2
-  kirbyDamageRegular: 0.1
+  kirbyDamageRegular: 20
+  kirbyDamageBig: 30
+  kirbySmallHeal: 20
+  kirbyMediumHeal: 30
   maxInvinibilityTimer: 1.5
   flickerRate: 0.1

@@ -13,8 +13,6 @@ public class KirbyCollisionsManager : MonoBehaviour
             //hurt Kirby
             adjustHealth.changeKirbyHealthEvent.Invoke(ChangeHealth.Default_Damage);
 
-            Debug.Log("APPLE HURT");
-
         }
     }
 

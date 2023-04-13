@@ -96,9 +96,6 @@ public class KirbyInhale : MonoBehaviour
         }
         else if (canThrowFood)
         {
-
-            AudioManager.Instance.PlaySound("k_exhale");
-
             //When Throw food, instantiate star that travels in the direction kirby facing. Deals damage to enemies
             GameObject starObject = Instantiate(attackPrefab, kirbyMouth.transform.position, kirbyMouth.transform.rotation);
             int launchDirection = (int)Mathf.Sign(transform.localScale.x);

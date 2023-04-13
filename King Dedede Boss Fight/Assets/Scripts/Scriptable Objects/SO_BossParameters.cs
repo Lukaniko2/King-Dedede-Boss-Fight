@@ -8,7 +8,6 @@ public class SO_BossParameters : ScriptableObject
     public string bossName;
 
     [Header("HEALTH PARAMETERS")]
-    public float maxHealth;
     public float bossDamageDecrement;
 
     [Header("MOVEMENT PARAMETERS")]

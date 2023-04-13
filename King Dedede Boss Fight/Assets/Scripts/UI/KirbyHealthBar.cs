@@ -10,6 +10,7 @@ public class KirbyHealthBar : MonoBehaviour
     private SpriteRenderer kirbySr;
     private KirbyAnimationController anim;
     private KirbyMovement kirbyMov;
+    private KirbyDetails kirbyDetails;
 
     private GameObject kirbyGameObject;
     private RectTransform kirbyRectTransform;
@@ -24,6 +25,7 @@ public class KirbyHealthBar : MonoBehaviour
         kirbyGameObject = GameObject.FindObjectOfType<PlayerInput>().gameObject;
         kirbyRectTransform = GetComponent<RectTransform>();
 
+        kirbyDetails = kirbyGameObject.GetComponent<KirbyDetails>();
         anim = kirbyGameObject.GetComponent<KirbyAnimationController>();
         kirbySr = kirbyGameObject.GetComponent<SpriteRenderer>();
         kirbyMov = kirbyGameObject.gameObject.GetComponent<KirbyMovement>();
@@ -51,27 +53,41 @@ public class KirbyHealthBar : MonoBehaviour
         color.a %= 2;
         kirbySr.color = new Color(1, 1, 1, color.a);
     }
-    public void KirbyDamage(float kirbyDamageDecrement)
+    public void KirbyChangeHealth(float kirbyChangedHealth)
     {
-        //If Invincible, don't take any damage
-        bool isInvincible = Time.time - currentInvincibilityTime <= kirbyParams.maxInvinibilityTimer;
-        if (isInvincible)
-            return;
-
-        AudioManager.Instance.PlaySound("k_hurt");
-
-        //reduce health by certain threshold
-        kirbyRectTransform.localScale -= new Vector3(kirbyDamageDecrement / IsShielding(), 0, 0);
-
-        //if Kirby's health bar is less than 0, then the player loses
-        if (transform.localScale.x <= 0)
+        //Check to see if healing or damage is being passed
+        bool isDamage = kirbyChangedHealth < 0;
+        if(isDamage)
         {
-            anim.SendMessage("Outro", "Outro3");
-            kirbyRectTransform.localScale = new Vector3(0, kirbyRectTransform.localScale.y, kirbyRectTransform.localScale.z);
+            bool isInvincible = Time.time - currentInvincibilityTime <= kirbyParams.maxInvinibilityTimer;
+            if (isInvincible)
+                return;
+
+            //Reduce Health Bar
+            kirbyDetails.KirbyHealth += kirbyChangedHealth / IsShielding();
+            kirbyRectTransform.sizeDelta += new Vector2(kirbyChangedHealth / IsShielding(), 0);
+
+
+            bool lostAllHealth = kirbyDetails.KirbyHealth <= 0;
+            if (lostAllHealth)
+                anim.SendMessage("Outro", "Outro3");
+
+            //Set them invincible for a certain period of time
+            currentInvincibilityTime = Time.time;
+            AudioManager.Instance.PlaySound("k_hurt");
+
+        }
+        else
+        {
+            //Gain Health
+            kirbyDetails.KirbyHealth += kirbyChangedHealth;
+            kirbyRectTransform.sizeDelta -= new Vector2(kirbyChangedHealth, 0);
         }
 
-        //Set them invincible for a certain period of time
-        currentInvincibilityTime = Time.time;
+        
+
+        
+        
 
     }
 

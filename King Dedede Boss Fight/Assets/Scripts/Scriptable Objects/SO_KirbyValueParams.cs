@@ -26,9 +26,11 @@ public class SO_KirbyValueParams : ScriptableObject
     public float suckSpeed;
 
     [Header("HEALTH PARAMETERS")]
-    public float maxHealth;
     public float kirbyDamageShieldingDivider;
     public float kirbyDamageRegular;
+    public float kirbyDamageBig;
+    public float kirbySmallHeal;
+    public float kirbyMediumHeal;
 
     [Header("INVINCIBILITY PARAMETERS")]
     public float maxInvinibilityTimer;

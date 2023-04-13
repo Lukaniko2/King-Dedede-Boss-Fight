@@ -35,32 +35,36 @@ public class UIManager : MonoBehaviour
 
     private void AdjustKirbyHealth(ChangeHealth changeHealthState)
     {
-        float healthAdjustment = GetHealthValue(changeHealthState);
-        kirbyHealthBar.KirbyDamage(healthAdjustment);
+        float healthAdjustment = GetHealthValueKirby(changeHealthState);
+
+        kirbyHealthBar.KirbyChangeHealth(healthAdjustment);
     }
     private void AdjustBossHealth(ChangeHealth changeHealthState)
     {
-        float healthAdjustment = GetHealthValue(changeHealthState);
+        float healthAdjustment = bossParameters.bossDamageDecrement;
         bossHealthBar.BossDamage(healthAdjustment);
     }
 
 
-    private float GetHealthValue(ChangeHealth changeHealthState)
+    private float GetHealthValueKirby(ChangeHealth changeHealthState)
     {
         float healthToReturn = 0;
         switch(changeHealthState)
         {
             case ChangeHealth.Default_Damage:
-                healthToReturn = kirbyValueParams.kirbyDamageRegular;
+                healthToReturn = -kirbyValueParams.kirbyDamageRegular;
                 break;
             case ChangeHealth.Big_Damage:
-                healthToReturn = kirbyValueParams.kirbyDamageRegular * 2;
+                healthToReturn = -kirbyValueParams.kirbyDamageBig;
                 break;
             case ChangeHealth.Small_Heal:
+                healthToReturn = kirbyValueParams.kirbySmallHeal;
                 break;
             case ChangeHealth.Medium_Heal:
+                healthToReturn = kirbyValueParams.kirbyMediumHeal;
                 break;
             case ChangeHealth.Full_Heal:
+                healthToReturn = 100;
                 break;
 
 
@@ -68,4 +72,5 @@ public class UIManager : MonoBehaviour
         return healthToReturn;
 
     }
+
 }

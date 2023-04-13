@@ -6,12 +6,16 @@ public class BossHealthBar : MonoBehaviour
 {
     //References
     private UIManager uiManager;
+    private RectTransform bossRectTransform;
 
-    float bossBarScaleX;
-    [SerializeField] float blueBarIncreaseSpeed;
+    //Variables
+    [SerializeField] private float blueBarIncreaseSpeed;
+    private float bossBarScaleX;
+    
 
     private void Awake()
     {
+        bossRectTransform = GetComponent<RectTransform>();
         uiManager = GameObject.FindObjectOfType<UIManager>();
     }
 
@@ -29,17 +33,15 @@ public class BossHealthBar : MonoBehaviour
     private void IncreaseBossBar()
     {
         //Increase the blue boss bar until full. (Mini animation that plays at beginning)
-        bossBarScaleX = transform.localScale.x;
+        bossBarScaleX = bossRectTransform.sizeDelta.x;
         bossBarScaleX += blueBarIncreaseSpeed * Time.deltaTime;
 
-        transform.localScale = new Vector3(bossBarScaleX, transform.localScale.y, 0);
+        bossRectTransform.sizeDelta = new Vector2(bossBarScaleX, bossRectTransform.sizeDelta.y);
 
         //when the boss bar loads up all the way to being full, then commence the battle and keep it's scale at max
-        if (bossBarScaleX >= 0.3836945f)
+        if (bossRectTransform.sizeDelta.x >= 100)
         {
             uiManager.FinishedBossIntro = true;
-
-            bossBarScaleX = 0.3836945f;
 
             AudioManager.Instance.StopSound("ui_bossBarIncrease");
         }
@@ -50,9 +52,9 @@ public class BossHealthBar : MonoBehaviour
         AudioManager.Instance.PlaySound("ui_bossHurt");
 
         //Decrement boss health when hit. Called from the UIManager Class
-        transform.localScale -= new Vector3(bossBarScaleX - bossHealthDecrement, 0, 0);
+        bossRectTransform.sizeDelta -= new Vector2(bossHealthDecrement, 0);
 
-        bool bossIsDefeated = transform.localScale.x <= 0;
+        bool bossIsDefeated = bossRectTransform.sizeDelta.x <= 0;
         if (bossIsDefeated)
         {
             GameManager.bossIsDefeated = true;
