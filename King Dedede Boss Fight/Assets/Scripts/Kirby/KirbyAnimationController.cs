@@ -4,213 +4,206 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class KirbyAnimationController : MonoBehaviour
 {
-    //Components
-    KirbyInputHandler input;
+    //Kirby References
+    private KirbyInputHandler input;
 
-    KirbyInhale kirbyInhale;
-    KirbyMovement kirbyMovement;
-    Animator animator;
-    CameraMovement cam;
-
-    public bool inhaleLoop;
-    public bool canPlayStar;
+    private KirbyInhale kirbyInhale;
+    private KirbyMovement kirbyMovement;
+    private Animator animator;
 
     //Particle Elements
-    GameObject run;
-    ParticleSystem runDust;
+    private GameObject inhaleGameObject;
+    private GameObject runDustGameObject;
+    private ParticleSystem runDustParticle;
+    private ParticleSystem starFall;
 
-    ParticleSystem starFall;
+    //Variables
+    public bool inhaleLoop; //inhale anim does a unique start, then goes into a new looping animation
+    public bool canPlayStar;
+    private bool canPlayRunSound = true;
 
-    GameObject breathe;
-    ParticleSystem inhale;
 
-    //Audio Components
-    AudioSource audioSource;
-    [SerializeField] AudioClip[] sounds;
-
-    //star
-    [SerializeField] VictoryStars stars;
-    public bool gameHalt = false;
-    // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
+        //References
         input = GetComponent<KirbyInputHandler>();
 
-        cam = GameObject.Find("BossStartTrigger").GetComponent<CameraMovement>();
         kirbyInhale = GetComponent<KirbyInhale>();
         kirbyMovement = GetComponent<KirbyMovement>();
         animator = GetComponent<Animator>();
-        run = GameObject.Find("RunDust");
-        runDust = run.GetComponent<ParticleSystem>();
-        starFall = GameObject.Find("StarFall").GetComponent<ParticleSystem>();
-        breathe = GameObject.Find("Inhale");
-        inhale = breathe.GetComponent<ParticleSystem>();
 
-        audioSource = GetComponent<AudioSource>();
+        //Particle Getting
+        runDustGameObject = transform.GetChild(1).gameObject;
+        runDustParticle = runDustGameObject.GetComponent<ParticleSystem>();
+
+        starFall = transform.GetChild(2).gameObject.GetComponent<ParticleSystem>();
+        inhaleGameObject = transform.GetChild(0).transform.GetChild(1).gameObject;
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        //KIRBY HAS A LOT OF ANIMATIONS!! AND THEY'RE SO ANNOYING TO CONFIGURE!!
-        if(!gameHalt)
-        {
-            animController();
-            animControllerFood();
-            ParticleController();
-        }
+        if (GameManager.gameEnded)
+            return;
 
+        animController();
+        animControllerFood();
+        ParticleController();
     }
   
 
 
     void animController()
     {
-        //set animation state to running if horizontal movement
-        if (input.HorizontalMovement.x != 0 && !kirbyInhale.inhaling)
+        //Running Anims
+        bool anim_Run = input.HorizontalMovement != 0 && !kirbyInhale.inhaling;
+        bool anim_Idle = input.HorizontalMovement == 0 && !kirbyInhale.inhaling && kirbyMovement.isGrounded;
+
+        if (anim_Run)
         {
             animator.SetInteger("animState", 1);
+
+            if(canPlayRunSound)
+            {
+                AudioManager.Instance.PlaySound("k_run");
+                canPlayRunSound = false;
+            }
+                
         }
-        //set animation state to idle animation if no horizontal movement
-        else if (input.HorizontalMovement.x == 0 && !kirbyInhale.inhaling && kirbyMovement.isGrounded)
+        else if (anim_Idle)
         {
             animator.SetInteger("animState", 0);
-
-            if(!input.IsHoldingInhale)
-            {
-               // AudioManager.Instance.PlaySound("k_run");
-            }
-            
+            canPlayRunSound = true;
         }
+            
 
-        //if Kirby is puffed
-        if (kirbyMovement.isHoldingJumpPuff)
+        //Jump / Puff / Fall Anims
+        bool anim_PuffStart = kirbyMovement.isHoldingJumpPuff;
+        bool anim_PuffIdle = kirbyMovement.isPuffed;
+        bool anim_Exhaled = kirbyInhale.frozen;
+
+        bool anim_JumpingUp = kirbyMovement.isHoldingJump || kirbyMovement.speed.y > 0 && !kirbyInhale.inhaling;
+        bool anim_PeakOfJump = kirbyMovement.isJumping && kirbyMovement.speed.y <= 0 && !kirbyInhale.inhaling;
+
+        bool anim_IsFalling = kirbyMovement.speed.y <= 0 && !kirbyMovement.isGrounded && !kirbyMovement.bigFall && !kirbyInhale.inhaling;
+        bool anim_BigFall = kirbyMovement.bigFall && !kirbyInhale.inhaling;
+
+        if (anim_PuffStart)
         {
             animator.SetInteger("animState", 16);
         }
-        else if (kirbyMovement.isPuffed)
-        {
-            animator.SetInteger("animState", 17);
-        }
-        else if (kirbyInhale.frozen)
-        {
-            animator.SetInteger("animState", 12);
             
-        }
-        //jump up animation when the player presses space
-        else if (kirbyMovement.isHoldingJump || kirbyMovement.speed.y > 0 && !kirbyInhale.inhaling)
-        {
+
+        else if (anim_PuffIdle)
+            animator.SetInteger("animState", 17);
+
+        else if (anim_Exhaled)
+            animator.SetInteger("animState", 12);
+
+        //Jumping Anims
+        else if (anim_JumpingUp)
             animator.SetInteger("animState", 2);
-           
-        }
-        //when the jump reaches the peak
-        else if (kirbyMovement.isJumping && kirbyMovement.speed.y <= 0 && !kirbyInhale.inhaling)
-        {
+
+        else if (anim_PeakOfJump)
             animator.SetInteger("animState", 3);
-        }
-        //isfalling
-        else if (kirbyMovement.speed.y <= 0 && !kirbyMovement.isGrounded && !kirbyMovement.bigFall && !kirbyInhale.inhaling)
-        {
+
+        //Falling Anims
+        else if (anim_IsFalling)
             animator.SetInteger("animState", 4);
-        }
-        else if (kirbyMovement.bigFall && !kirbyInhale.inhaling)
-        {
+
+        else if (anim_BigFall)
             animator.SetInteger("animState", 5);
-        }
 
-        //inhaling animations
-        if (kirbyInhale.inhaling && inhaleLoop == false)
-        {
+        //Inhaling Anims
+        bool anim_InhaleStart = kirbyInhale.inhaling && inhaleLoop == false;
+        bool anim_InhaleLoop = kirbyInhale.inhaling;
+
+        if (anim_InhaleStart)
             animator.SetInteger("animState", 6);
-        }
-        else if (kirbyInhale.inhaling)
-        {
-            animator.SetInteger("animState", 15);
-        }
 
-        //shielding animations
-        if(kirbyMovement.isSheilding)
-        {
+        else if (anim_InhaleLoop)
+            animator.SetInteger("animState", 15);
+
+        //Shielding Anims
+        bool anim_Shielding = kirbyMovement.isShielding;
+
+        if(anim_Shielding)
             animator.SetInteger("animState", 18);
-        }
         
     }
     void animControllerFood()
     {
+        //Moving Food Anims
+        bool anim_exhaled = kirbyInhale.frozen;
+        bool anim_foodRun = kirbyInhale.hasFood && input.HorizontalMovement != 0 && !kirbyInhale.frozen;
+        bool anim_foodIdle = input.HorizontalMovement == 0 && kirbyInhale.hasFood;
 
-        if (kirbyInhale.frozen)
-        {
+        if (anim_exhaled)
             animator.SetInteger("animState", 12);
-        }
-        //run
-        else if (kirbyInhale.hasFood && input.HorizontalMovement.x != 0 && !kirbyInhale.frozen)
-        {
+
+        else if (anim_foodRun)
             animator.SetInteger("animState", 8);
-        }
-        //idle
-        else if (input.HorizontalMovement.x == 0 && kirbyInhale.hasFood)
-        {
+
+        else if (anim_foodIdle)
             animator.SetInteger("animState", 7);
-        }
-        //jump up animation when the player presses space
-        if (kirbyMovement.isHoldingJump && kirbyInhale.hasFood || kirbyMovement.speed.y > 0 && kirbyInhale.hasFood)
-        {
+
+        //Jumping / Falling Food Anims
+        bool anim_foodJump = kirbyMovement.isHoldingJump && kirbyInhale.hasFood || kirbyMovement.speed.y > 0 && kirbyInhale.hasFood;
+        bool anim_foodJumpPeak = kirbyMovement.isJumping && kirbyMovement.speed.y <= 0 && kirbyInhale.hasFood;
+        bool anim_foodFalling = kirbyMovement.speed.y <= 0 && !kirbyMovement.isGrounded && kirbyInhale.hasFood;
+
+        if (anim_foodJump)
             animator.SetInteger("animState", 9);
-        }
-        //when the jump reaches the peak
-        if (kirbyMovement.isJumping && kirbyMovement.speed.y <= 0 && kirbyInhale.hasFood)
-        {
+
+        if (anim_foodJumpPeak)
             animator.SetInteger("animState", 10);
-        }
-        //isfalling
-        else if (kirbyMovement.speed.y <= 0 && !kirbyMovement.isGrounded && kirbyInhale.hasFood)
-        {
+
+        else if (anim_foodFalling)
             animator.SetInteger("animState", 11);
-        }
 
     }
 
 
-    void ParticleController()
+    private void ParticleController()
     {
-        //for making particles visible if certain conditions are met
-
-        //if the player runs, spawn dust particles
-        if(input.HorizontalMovement.x == -1 && !kirbyInhale.inhaling && kirbyMovement.isGrounded)
+        #region Dust Particles
+        bool isMovingOnGround = input.HorizontalMovement != 0 && !kirbyInhale.inhaling && !kirbyMovement.isShielding && kirbyMovement.isGrounded;
+        if (isMovingOnGround)
         {
-            runDust.startSpeed = 0.4f;
-            run.SetActive(true);
-        }
-        else if (input.HorizontalMovement.x == 1 && !kirbyInhale.inhaling && kirbyMovement.isGrounded)
-        {
-            runDust.startSpeed = -0.4f;
-            run.SetActive(true);
+            runDustParticle.startSpeed = 0.4f * -Mathf.Sign(input.HorizontalMovement);
+            runDustGameObject.SetActive(true);
         }
         else
-        {
-            run.SetActive(false);
-        }
+            runDustGameObject.SetActive(false);
 
-        //if the player falls on the ground, spawn a star particle
-        if(kirbyMovement.isGrounded && canPlayStar)
+        #endregion
+
+        #region Star Particle When Hit Ground
+
+        if (kirbyMovement.isGrounded && canPlayStar)
         {
             starFall.Play();
             canPlayStar = false;
         }
+        #endregion
 
-        //when the player inhales spawn air particles that get sucked into kirby's mouth
-        if(kirbyInhale.inhaling)
+        #region Inhaling Particles When Hold Down LMB
+
+        if (kirbyInhale.inhaling)
         {
-            breathe.SetActive(true);
-            float a = breathe.transform.localScale.x; //flip the sprite depending on the player's sprite
-            a = transform.localScale.x;
-            breathe.transform.localScale = new Vector3(a, 1, 1);
+            inhaleGameObject.SetActive(true);
+
+            //flip Inhale Game Object depending on scale of player
+            float direction = inhaleGameObject.transform.localScale.x;
+            direction = transform.localScale.x;
+
+            inhaleGameObject.transform.localScale = new Vector3(direction, 1, 1);
 
         }
-        else if(!kirbyInhale.inhaling)
-        {
-            breathe.SetActive(false);
-        }
+        else if (!kirbyInhale.inhaling)
+            inhaleGameObject.SetActive(false);
+
+        #endregion
     }
 
     void InhaleLoop()
@@ -233,21 +226,22 @@ public class KirbyAnimationController : MonoBehaviour
     void Outro2()
     {
         //If kirby touches the victory star after beating the boss, play the victory dance then reset the scene
-        gameHalt = true;
+        GameManager.gameEnded = true;
+
         animator.SetInteger("animState", 19);
-        audioSource.Stop();
-        audioSource.clip = sounds[2];
-        audioSource.Play();
+
+        AudioManager.Instance.StopAll();
+        AudioManager.Instance.PlaySound("bgm_victory");
     }
     void Outro3()
     {
-        //If kirby touches the victory star after beating the boss, play the victory dance then reset the scene
-        gameHalt = true;
-        cam.SendMessage("LowerVolume");
+        //If kirby loses all health, then lose
+        GameManager.gameEnded = true;
+
         animator.SetInteger("animState", 20);
-        audioSource.Stop();
-        audioSource.clip = sounds[3];
-        audioSource.Play();
+
+        AudioManager.Instance.StopAll();
+        AudioManager.Instance.PlaySound("bgm_defeat");
     }
 
     //for reloading the scene after the player wins or loses

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - Wall
+  - LockCamera
+  - Suckable
+  - Enemy
   layers:
   - Default
   - TransparentFX

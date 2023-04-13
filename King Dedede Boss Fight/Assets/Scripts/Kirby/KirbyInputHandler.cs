@@ -7,8 +7,8 @@ public class KirbyInputHandler : MonoBehaviour
 {
     //values will be read by playerMovement and playerAnimationsScripts
     //Movement
-    private Vector2 horizontalMovement;
-    public Vector2 HorizontalMovement
+    private int horizontalMovement;
+    public int HorizontalMovement
     {
         get => horizontalMovement;
         set => horizontalMovement = value;
@@ -54,7 +54,8 @@ public class KirbyInputHandler : MonoBehaviour
         if (context.started)
             return;
 
-        HorizontalMovement = context.ReadValue<Vector2>();
+        Vector2 allDirections = context.ReadValue<Vector2>();
+        HorizontalMovement = (int)allDirections.x;
     }
 
     public void OnJump(InputAction.CallbackContext context)

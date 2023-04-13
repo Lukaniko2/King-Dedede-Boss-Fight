@@ -6,7 +6,6 @@ using UnityEngine;
 public class SO_KirbyValueParams : ScriptableObject
 {
     [Header("MOVEMENT PARAMETERS")]
-
     public float slowDownInAir; //when inhaling or shielding in air, slow movement down to 0
 
     [Header("Jump Parameters")]
@@ -23,8 +22,18 @@ public class SO_KirbyValueParams : ScriptableObject
     public float maxJumpHoldPuff;
     public float jumpPuffForce;
 
+    [Header("INHALING PARAMETERS")]
+    public float suckSpeed;
+
     [Header("HEALTH PARAMETERS")]
-    [Space]
-    public float kirbyDamageShielding;
+    public float maxHealth;
+    public float kirbyDamageShieldingDivider;
+    public float kirbyDamageRegular;
+
+    [Header("INVINCIBILITY PARAMETERS")]
+    public float maxInvinibilityTimer;
+    public float flickerRate;
+
+    
 
 }

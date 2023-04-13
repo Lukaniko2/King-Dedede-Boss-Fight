@@ -20,28 +20,28 @@ public class KirbyShield : MonoBehaviour
         kirbyInhale = GetComponent<KirbyInhale>();
 
         ui = GameObject.FindObjectOfType<UIManager>();
-        originalPercentKirbyDamage = ui.percentKirbyDamage;
     }
 
     private void Update()
     {
-        Shielding();
+        if (!GameManager.gameEnded)
+            Shielding();
     }
 
     void Shielding()
     {
-        if(input.shieldPressedInput.WasPerformedThisFrame() && !kirbyMov.isPuffed && !kirbyInhale.inhaling)
+        bool pressedShieldButtonAudio = input.shieldPressedInput.WasPerformedThisFrame() && !kirbyMov.isPuffed && !kirbyInhale.inhaling && !kirbyInhale.hasFood;
+        bool canShield = input.IsHoldingShield && !kirbyMov.isPuffed && !kirbyInhale.inhaling && !kirbyInhale.hasFood;
+
+        if (pressedShieldButtonAudio)
         {
             //Play Sound
             AudioManager.Instance.StopSound("k_shield");
             AudioManager.Instance.PlaySound("k_shield");
-
-
         }
-        else if (input.IsHoldingShield && !kirbyMov.isPuffed && !kirbyInhale.inhaling)
+        else if (canShield)
         {
-            ui.percentKirbyDamage = kirbyParams.kirbyDamageShielding;
-            kirbyMov.isSheilding = true;
+            kirbyMov.isShielding = true;
 
             //slow down Kirby's x movement when holding down the shield button (RMB)
             kirbyMov.SendMessage("EaseMove");
@@ -51,9 +51,7 @@ public class KirbyShield : MonoBehaviour
         if (!input.IsHoldingShield)
         {
             //if Let go of RMP, they aren't shielding anymore and have their original speed back
-            //kirbyMov.speed.x = kirbyInhale.velX;
-            kirbyMov.isSheilding = false;
-            ui.percentKirbyDamage = originalPercentKirbyDamage;
+            kirbyMov.isShielding = false;
 
         }
     }

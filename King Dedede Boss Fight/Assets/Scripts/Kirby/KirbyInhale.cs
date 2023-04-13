@@ -4,47 +4,46 @@ using UnityEngine;
 
 public class KirbyInhale : MonoBehaviour
 {
-    //components
+    //References
     [SerializeField] private SO_KirbyValueParams kirbyParams;
     private KirbyInputHandler input;
-    
-
     private KirbyMovement kirbyMov;
     private KirbyAnimationController animController;
+
+    //Components
     [SerializeField] private GameObject kirbyMouth;
     [SerializeField] private GameObject attackPrefab;
 
-
-    public float velX; //store speed
-    
+    //Variables
+    public bool frozen = false;
     public bool hasFood = false;
     public bool inhaling = false;
     public bool canInhale = true; //checks to see if can inhale after certain amount of time after releasing the LMB
-    float currentGravity; // when spitFood in air or huff in air, pause for a bit
-    private Vector2 currentSpeed; // when spitFood in air or huff in air, pause for a bit
-    public bool frozen = false;
 
-    //sounds
-    AudioSource audioSource;
-    [SerializeField] AudioClip[] sounds;
+    private float velX;
+    private float currentGravity; // when spitFood in air or huff in air, pause for a bit
+    private Vector2 currentSpeed; // when spitFood in air or huff in air, pause for a bit
+    
 
     private void Awake()
     {
         input = GetComponent<KirbyInputHandler>();
 
         kirbyMov = GetComponent<KirbyMovement>();
-        audioSource = GetComponent<AudioSource>();
-        animController = GetComponent<KirbyAnimationController>();
 
-        velX = kirbyMov.speed.x;
-        currentGravity = kirbyMov.codeGravity;
-        
+        animController = GetComponent<KirbyAnimationController>();
     }
 
-    // Update is called once per frame
+    private void Start()
+    {
+        velX = kirbyMov.speed.x;
+        currentGravity = kirbyMov.codeGravity;
+    }
+
     void Update()
     {
-        Inhale();
+        if (!GameManager.gameEnded)
+            Inhale();
     }
 
     void Inhale()
@@ -54,11 +53,11 @@ public class KirbyInhale : MonoBehaviour
         //Do math to calculate distance from kirby's mouth and their position to lerp it there (gameObject infront of kirby mouth)
         //Once the enemy is being sucked in, enable "isTrigger" and if the kirby collider hits the trigger, then destroy the game object
 
-        bool canPerformInhale = input.IsHoldingInhale && !hasFood && canInhale && !kirbyMov.isPuffed && !kirbyMov.isSheilding;
+        bool canPerformInhale = input.IsHoldingInhale && !hasFood && canInhale && !kirbyMov.isPuffed && !kirbyMov.isShielding;
         bool letGoOfInhale = !input.IsHoldingInhale;
-        bool letGoOfInhaleNotPuffed = letGoOfInhale && !kirbyMov.isPuffed && !kirbyMov.isSheilding;
-        bool exhaleInAir = input.inhalePressedInput.WasPerformedThisFrame() && kirbyMov.isPuffed && !kirbyMov.isSheilding;
-        bool canThrowFood = input.IsHoldingInhale && hasFood;
+        bool letGoOfInhaleNotPuffed = letGoOfInhale && !kirbyMov.isPuffed && !kirbyMov.isShielding;
+        bool exhaleInAir = input.inhalePressedInput.WasPerformedThisFrame() && kirbyMov.isPuffed && !kirbyMov.isShielding;
+        bool canThrowFood = input.inhalePressedInput.WasPerformedThisFrame() && hasFood;
 
         if (canPerformInhale)
         {
@@ -80,7 +79,6 @@ public class KirbyInhale : MonoBehaviour
             //if they press LMB while puffed in the air, return to original gravity
             canInhale = false;
             kirbyMov.isPuffed = false;
-            kirbyMov.isHoldingJumpPuff = false;
             kirbyMov.codeGravity = kirbyParams.gravityRegularJump;
             kirbyMov.codeMinSpeed = kirbyParams.minSpeedRegularJump;
             FreezeGravity();
@@ -98,9 +96,14 @@ public class KirbyInhale : MonoBehaviour
         }
         else if (canThrowFood)
         {
-            //Kirby has food and cannot inhale anymore
-            //instantiate a gameObject with an attack sprite
-            Instantiate(attackPrefab, kirbyMouth.transform.position, kirbyMouth.transform.rotation);
+
+            AudioManager.Instance.PlaySound("k_exhale");
+
+            //When Throw food, instantiate star that travels in the direction kirby facing. Deals damage to enemies
+            GameObject starObject = Instantiate(attackPrefab, kirbyMouth.transform.position, kirbyMouth.transform.rotation);
+            int launchDirection = (int)Mathf.Sign(transform.localScale.x);
+            starObject.GetComponent<Attack>().TravelDirection = launchDirection;
+
             hasFood = false;
 
             FreezeGravity();

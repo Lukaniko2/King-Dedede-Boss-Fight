@@ -4,55 +4,74 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    UIManager ui;
-    //BossAttacks boss;
-    AudioSource audio;
-    [SerializeField] private Camera camera;
-    [SerializeField] private GameObject kirby;
-    public bool isFollowing = true; //if the camera is following kirby
-    private bool firstTime = false;
-
-    private void Awake()
+    private enum CameraFollowType
     {
-        ui = GameObject.Find("Canvas").GetComponent<UIManager>();
-        //boss = GameObject.Find("WhispyWoods").GetComponent<BossAttacks>();
-        audio = GameObject.Find("Main Camera").GetComponent<AudioSource>();
+        Horizontal,
+        Vertical,
+        Both
     }
-    // Update is called once per frame
-    void Update()
-    {
-        //Make the camera follow Kirby's vertical movement with smoothing
-        //if Kirby enters the  trigger to start the boss fight, then set the camera to a fixed position (gameObject that contains the trigger);
-        if (isFollowing)
-        {
-            Vector3 diff = (kirby.transform.position - camera.transform.position);
-            camera.transform.Translate(Vector3.up * diff.y);
-        }
+    [SerializeField] private CameraFollowType cameraFollowType;
 
-    }
+    //Variables
+    public bool isFollowing = true; //if the camera is following the player
 
+    [SerializeField] private GameObject followTarget;
 
+    [SerializeField] private Camera cameraMain;
+   
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.name == "Kirby")
+        //if you want to make the camera freeze once we get in a trigger location, then set the GameObject to Lock Camera.
+        if (!gameObject.CompareTag("LockCamera"))
+            return;
+
+        if(other.gameObject.CompareTag("Player"))
         {
             //if kirby enters the trigger where the boss area is, initiate the boss fight and lock the camera position 
             isFollowing = false;
-            ui.bossBarVisible = true;
-            camera.transform.position = new Vector3(0,0,-10);
 
-            if(!firstTime)
-            {
-                //start the time for the boss to start 
-                //boss.bossCurrentTime = Time.time;
-                firstTime = true;
-            }
+            cameraMain.transform.position = new Vector3(0,0,-10);
             
         }
     }
-    void LowerVolume()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        for(int i = 0; i < 10; i++)
-            audio.volume -= 0.1f;
+        if (!isFollowing)
+            return;
+
+        //if the player is within the bounds of the camera follow, then follow
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Vector3 diff = (followTarget.transform.position - cameraMain.transform.position);
+
+            CheckFollowType(diff);
+        }
+    }
+   
+    private void CheckFollowType(Vector2 diff)
+    {
+        switch(cameraFollowType)
+        {
+            case CameraFollowType.Horizontal:
+                FollowHorizontal(diff);
+                break;
+
+            case CameraFollowType.Vertical:
+                FollowVertical(diff);
+                break;
+
+            case CameraFollowType.Both:
+                FollowHorizontal(diff);
+                FollowVertical(diff);
+                break;
+        }
+    }
+    private void FollowHorizontal(Vector3 diff)
+    {
+        cameraMain.transform.Translate(Vector3.right * diff.x);
+    }
+    private void FollowVertical(Vector3 diff)
+    {
+        cameraMain.transform.Translate(Vector3.up * diff.y);
     }
 }
