@@ -56,7 +56,7 @@ public class KirbyAnimationController : MonoBehaviour
     void animController()
     {
         //Running Anims
-        bool anim_Run = input.HorizontalMovement != 0 && !kirbyInhale.inhaling;
+        bool anim_Run = input.HorizontalMovement != 0 && !kirbyInhale.inhaling && !kirbyMovement.isShielding;
         bool anim_Idle = input.HorizontalMovement == 0 && !kirbyInhale.inhaling && kirbyMovement.isGrounded;
 
         if (anim_Run)

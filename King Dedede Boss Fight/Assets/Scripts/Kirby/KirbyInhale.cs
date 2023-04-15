@@ -106,6 +106,10 @@ public class KirbyInhale : MonoBehaviour
             FreezeGravity();
         }
 
+        //For stopping audio if they get food
+        if(hasFood)
+            AudioManager.Instance.StopSound("k_inhale");
+
     }
 
     public void FreezeGravity()
