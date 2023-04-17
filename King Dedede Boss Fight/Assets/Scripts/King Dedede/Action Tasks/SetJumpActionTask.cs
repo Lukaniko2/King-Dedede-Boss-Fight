@@ -83,7 +83,7 @@ namespace NodeCanvas.Tasks.Actions{
         private bool CheckGrounded()
         {
             LayerMask groundLayer = LayerMask.GetMask("Ground");
-            bool overlap = Physics2D.Linecast(agent.transform.position, (Vector2)agent.transform.position + Vector2.down * (col.radius + 0.09f), groundLayer);
+            bool overlap = Physics2D.Linecast(agent.transform.position, (Vector2)agent.transform.position + Vector2.down * (col.radius + 0.08f), groundLayer);
             
             return overlap;
         }

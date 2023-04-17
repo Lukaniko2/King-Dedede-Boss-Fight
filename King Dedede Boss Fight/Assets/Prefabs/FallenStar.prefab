@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8589077968280470280}
   - component: {fileID: 8589077968280470295}
   - component: {fileID: 8589077968280470294}
+  - component: {fileID: 5916557480946008376}
   m_Layer: 0
   m_Name: FallenStar
   m_TagString: Suckable
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8589077968280470293}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: 05f34fed590ee4240adb6d7744780de1, type: 3}
+  m_Sprite: {fileID: -1901746356, guid: 92278b6bec82b004982bdb63e8b09906, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -144,3 +145,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.14
+--- !u!114 &5916557480946008376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8589077968280470293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20c4bb9ee4737004e8a3d9b7d08da274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
