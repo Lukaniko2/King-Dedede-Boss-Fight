@@ -8,10 +8,12 @@ namespace NodeCanvas.Tasks.Actions{
 
 		//Variables
 		private Vector2 targetPositions;
+        private float maxPuffTime;
+        private float currentPuffTime;
 
-		protected override string OnInit(){
-
-			return null;
+        protected override string OnInit(){
+            maxPuffTime = blackboard.GetVariableValue<float>("maxPuffTime");
+            return null;
 		}
 
 		protected override void OnExecute(){
@@ -20,16 +22,29 @@ namespace NodeCanvas.Tasks.Actions{
 		}
 
 		protected override void OnUpdate(){
-			GettingPlayerLocation();
+            currentPuffTime += Time.deltaTime;
+
+            //Get the player's location every frame so dedede always goes in their direction
+            GettingPlayerLocation();
             targetPositions = blackboard.GetVariableValue<Vector2>("player_position");
 			
-
+            //calculate the direction to the player
 			Vector2 directionToTarget = (targetPositions - (Vector2)agent.transform.position);
 			
-
+            //set the velocity for the Steering Action Task to use
 			blackboard.SetVariableValue("puffSteerVel", directionToTarget.normalized);
-           
-		}
+
+
+            bool completeTime = currentPuffTime >= maxPuffTime;
+            if (completeTime)
+            {
+                currentPuffTime = 0;
+                Debug.Log(completeTime);
+                EndAction(true);
+
+            }
+
+        }
 
 		private void GettingPlayerLocation()
 		{

@@ -10,9 +10,11 @@ namespace NodeCanvas.Tasks.Actions{
 		/// Once it reaches that point, continue
 		/// </summary>
 
-		public float targetHeightAboveBoss;
+		//variables
+		public float maxHeightFromGround;
 		public float riseSpeed;
 		private float groundHeight;
+		private float currentAnimTime;
 
 		protected override string OnInit(){
 			return null;
@@ -20,7 +22,10 @@ namespace NodeCanvas.Tasks.Actions{
 
 
 		protected override void OnExecute(){
+
+			//make sure they only get the ground height once and not repeatedly
 			bool isPuffingUp = blackboard.GetVariableValue<bool>("isPuffingUp");
+
 			if(!isPuffingUp)
 			{
 				groundHeight = agent.transform.position.y;
@@ -30,11 +35,19 @@ namespace NodeCanvas.Tasks.Actions{
 		}
 
 		protected override void OnUpdate(){
+
+			//increase time for anim curve to evaluate the Y based on X (Time)
+			currentAnimTime += Time.deltaTime;
+
             Vector2 pos = agent.transform.position;
-			pos += Vector2.up * targetHeightAboveBoss * riseSpeed * Time.deltaTime;
+
+			pos += Vector2.up * riseSpeed * Time.deltaTime;
+
 			agent.transform.position = pos;
 
-			bool reachedTargetPos = agent.transform.position.y >= groundHeight + targetHeightAboveBoss;
+			
+
+			bool reachedTargetPos = agent.transform.position.y > groundHeight + maxHeightFromGround;
 			if(reachedTargetPos)
 			{
 				EndAction(true);
