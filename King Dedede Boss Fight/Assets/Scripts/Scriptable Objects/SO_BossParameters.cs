@@ -11,6 +11,7 @@ public class SO_BossParameters : ScriptableObject
     public float bossDamageDecrement;
 
     [Header("MOVEMENT PARAMETERS")]
+    public float bossSpeedSlow;
     public float bossSpeed;
     public float maxIdleTime;
 

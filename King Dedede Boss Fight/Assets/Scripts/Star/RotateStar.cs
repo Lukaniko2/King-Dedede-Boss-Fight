@@ -52,7 +52,7 @@ public class RotateStar : MonoBehaviour
 
         Vector2 scale = transform.localScale;
 
-        if (scale.x <= 0 && scale.y <= 0)
-            Destroy(transform.parent.gameObject);
+        if (scale.y <= 0)
+            Destroy(gameObject);
     }
 }

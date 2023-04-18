@@ -22,6 +22,8 @@ namespace NodeCanvas.Tasks.Actions{
 		protected override void OnExecute(){
 			rb.bodyType = RigidbodyType2D.Dynamic;
 			rb.gravityScale = rbGravity;
+
+			AudioManager.Instance.PlaySound("k_exhale");
 		}
 
 		protected override void OnUpdate(){

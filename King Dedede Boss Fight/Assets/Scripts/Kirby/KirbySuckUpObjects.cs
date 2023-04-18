@@ -28,7 +28,6 @@ public class KirbySuckUpObjects : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("Catch");
         //If the object can't be sucked up, return
         if (!collision.gameObject.CompareTag("Suckable"))
             return;

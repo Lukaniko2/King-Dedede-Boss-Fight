@@ -9,6 +9,7 @@ TagManager:
   - LockCamera
   - Suckable
   - Enemy
+  - StarAttack
   layers:
   - Default
   - TransparentFX

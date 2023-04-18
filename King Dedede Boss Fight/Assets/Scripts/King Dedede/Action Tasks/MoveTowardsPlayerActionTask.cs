@@ -5,11 +5,11 @@ using UnityEngine;
 namespace NodeCanvas.Tasks.Actions{
 
 	public class MoveTowardsPlayerActionTask : ActionTask{
-
+	
         //Variables
         public float distanceThreshold;
         private Vector2 playerTransform = Vector2.zero;
-		private float speed;
+		public float speed;
 	
 
 		protected override string OnInit(){
@@ -21,11 +21,11 @@ namespace NodeCanvas.Tasks.Actions{
 
 			playerTransform = blackboard.GetVariableValue<Vector2>("player_position");
 
-            speed = blackboard.GetVariableValue<float>("auto_speed");
 		}
 
 
 		protected override void OnUpdate(){
+			//Check as an alternative to seeing if the value is null. Is set to zero once reached player
 			if (playerTransform == Vector2.zero)
 				return;
 
