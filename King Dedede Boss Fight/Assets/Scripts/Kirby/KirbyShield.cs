@@ -9,9 +9,6 @@ public class KirbyShield : MonoBehaviour
     private KirbyInputHandler input;
     private KirbyMovement kirbyMov;
     private KirbyInhale kirbyInhale;
-    private UIManager ui;
-
-    private float originalPercentKirbyDamage;
 
     private void Awake()
     {
@@ -19,7 +16,6 @@ public class KirbyShield : MonoBehaviour
         kirbyMov = GetComponent<KirbyMovement>();
         kirbyInhale = GetComponent<KirbyInhale>();
 
-        ui = GameObject.FindObjectOfType<UIManager>();
     }
 
     private void Update()
@@ -28,10 +24,12 @@ public class KirbyShield : MonoBehaviour
             Shielding();
     }
 
-    void Shielding()
-    {
-        bool pressedShieldButtonAudio = input.shieldPressedInput.WasPerformedThisFrame() && !kirbyMov.isPuffed && !kirbyInhale.inhaling && !kirbyInhale.hasFood;
+    private void Shielding()
+    { 
+        bool pressedShieldButtonAudio = (input.playerInput.actions["Shield"].WasPerformedThisFrame() || input.playerInput.actions["Shield"].WasReleasedThisFrame() )&& !kirbyMov.isPuffed && !kirbyInhale.inhaling && !kirbyInhale.hasFood;
         bool canShield = input.IsHoldingShield && !kirbyMov.isPuffed && !kirbyInhale.inhaling && !kirbyInhale.hasFood;
+        
+        //Debug.Log(input.playerInput.actions["Shield"].WasPerformedThisFrame());
 
         if (pressedShieldButtonAudio)
         {
@@ -41,6 +39,7 @@ public class KirbyShield : MonoBehaviour
         }
         else if (canShield)
         {
+           
             kirbyMov.isShielding = true;
 
             //slow down Kirby's x movement when holding down the shield button (RMB)

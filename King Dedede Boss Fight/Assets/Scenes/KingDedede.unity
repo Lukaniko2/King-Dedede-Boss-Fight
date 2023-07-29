@@ -243,6 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63bd097357ad4674da299f4bcb8f2225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossDefeatedSender: {fileID: 11400000, guid: 71ce922d79caa904599e649d3baa76e7, type: 2}
   blueBarIncreaseSpeed: 100
 --- !u!1 &95552125
 GameObject:
@@ -575,7 +576,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &251235629
 GameObject:
@@ -796,6 +797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 930c61aceb10cb34b96f9acde3fac6d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SObossDefeat: {fileID: 11400000, guid: 71ce922d79caa904599e649d3baa76e7, type: 2}
 --- !u!1 &417670343
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,6 +908,7 @@ MonoBehaviour:
   isFollowing: 1
   followTarget: {fileID: 2039550820}
   cameraMain: {fileID: 820894456}
+  catchUpSpeed: 4.72
 --- !u!61 &509754369
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1318,6 +1321,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2080672151}
+  - {fileID: 1965032661}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1347,7 +1351,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 874599518}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.186, z: 0}
   m_LocalScale: {x: 0.43, y: 0.43, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1415,7 +1419,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: -1842371205, guid: 92278b6bec82b004982bdb63e8b09906, type: 3}
+  m_Sprite: {fileID: -961729984, guid: 244c486d29eace64abcdc39d8c84c462, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1747,7 +1751,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1096735201
 Transform:
   m_ObjectHideFlags: 0
@@ -7492,6 +7496,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3321072267914774598, guid: 9dd3b571b47a27b45835df454b874213, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321072267914774600, guid: 9dd3b571b47a27b45835df454b874213, type: 3}
+      propertyPath: weapons
+      value: 
+      objectReference: {fileID: 11400000, guid: 5f748c774446b8e4680f14446bfe48db, type: 2}
+    - target: {fileID: 3321072267914774600, guid: 9dd3b571b47a27b45835df454b874213, type: 3}
+      propertyPath: canInhale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321072267914774600, guid: 9dd3b571b47a27b45835df454b874213, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321072267914774604, guid: 9dd3b571b47a27b45835df454b874213, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321072267914774605, guid: 9dd3b571b47a27b45835df454b874213, type: 3}
+      propertyPath: jumpPressedInput.m_Id
+      value: e8b3e4bd-96c8-4844-aa0d-c528054a6d8b
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321072267914774605, guid: 9dd3b571b47a27b45835df454b874213, type: 3}
+      propertyPath: inhalePressedInput.m_Id
+      value: 5ba8e7e7-c407-48af-b1d1-227bcdfcb59a
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321072267914774605, guid: 9dd3b571b47a27b45835df454b874213, type: 3}
+      propertyPath: jumpPressedInput.m_Name
+      value: Jump Pressed Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321072267914774605, guid: 9dd3b571b47a27b45835df454b874213, type: 3}
+      propertyPath: shieldPressedInput.m_Id
+      value: 64b07ab5-82c9-4679-a370-b9bfb57eeac0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321072267914774605, guid: 9dd3b571b47a27b45835df454b874213, type: 3}
+      propertyPath: inhalePressedInput.m_Name
+      value: Inhale Pressed Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321072267914774605, guid: 9dd3b571b47a27b45835df454b874213, type: 3}
+      propertyPath: shieldPressedInput.m_Name
+      value: Shield Pressed Input
+      objectReference: {fileID: 0}
     - target: {fileID: 3321072267914774607, guid: 9dd3b571b47a27b45835df454b874213, type: 3}
       propertyPath: m_Name
       value: Kirby
@@ -7709,8 +7757,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f434b733d50994a899892ed57ce495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lowerSoundSpeed: 0.1
   Sounds:
-  - name: bgm_kingDededeMusic
+  - name: bgm_bossMusic
     clip: {fileID: 8300000, guid: 4e120406c1781c44e9741122504df5ae, type: 3}
     volume: 0.102
     pitch: 1
@@ -7812,6 +7861,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 9fc2263d19297cf4e8766b512e67e34d, type: 3}
     volume: 0.618
     pitch: 0.9
+    looping: 0
+    source: {fileID: 0}
+    type: 0
+  - name: d_scream
+    clip: {fileID: 8300000, guid: b91d428212d312440b2dca507152607e, type: 3}
+    volume: 0.549
+    pitch: 1
     looping: 0
     source: {fileID: 0}
     type: 0
@@ -7949,12 +8005,12 @@ GameObject:
   - component: {fileID: 1965032660}
   - component: {fileID: 1965032659}
   m_Layer: 0
-  m_Name: RedFlicker
+  m_Name: ScreenFlicker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1965032659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7967,10 +8023,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ebe61e8bc1077245810fb279c8e5ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  star: {fileID: 0}
-  cam: {fileID: 0}
-  flickerTime: 0
-  maxFlickers: 0
+  bossDefeatedEventSender: {fileID: 11400000, guid: 71ce922d79caa904599e649d3baa76e7, type: 2}
+  flickerTime: 0.09
+  maxFlickers: 9
 --- !u!212 &1965032660
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8011,7 +8066,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
@@ -8030,13 +8085,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1965032658}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3247, y: -5.43, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 3.4191751, y: 1.9364775, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_Father: {fileID: 820894457}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2039550820 stripped
 GameObject:
@@ -8130,7 +8185,7 @@ Transform:
   - {fileID: 123359193}
   - {fileID: 1096735201}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2085567556
 MonoBehaviour:
@@ -8161,21 +8216,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
-  _boundGraphSerialization: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"repeaterMode":2,"repeatTimes":{"_value":1},"_position":{"x":-226.1384,"y":-484.2192},"$type":"NodeCanvas.BehaviourTrees.Repeater","$id":"0"},{"_position":{"x":-216.8808,"y":-377.4862},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"1"},{"_condition":{"specifiedTagOnly":true,"objectTag":"StarAttack","saveGameObjectAs":{"_name":""},"saveContactPoint":{"_name":""},"saveContactNormal":{"_name":""},"$type":"NodeCanvas.Tasks.Conditions.CheckCollision2D_Rigidbody"},"_position":{"x":-469.1083,"y":-282.6258},"$type":"NodeCanvas.BehaviourTrees.Interruptor","$id":"2"},{"failureRemap":1,"_position":{"x":-427.45,"y":-155.0501},"$type":"NodeCanvas.BehaviourTrees.Remapper","$id":"3"},{"_position":{"x":-411.0533,"y":-26.7336},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"4"},{"_action":{"$type":"NodeCanvas.Tasks.Actions.SetBlackboardVariablesActionTask"},"_tag":"","_position":{"x":-1166.175,"y":448.6948},"_comment":"automaticaly
+  _boundGraphSerialization: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"repeaterMode":2,"repeatTimes":{"_value":1},"_position":{"x":-226.1384,"y":-484.2192},"$type":"NodeCanvas.BehaviourTrees.Repeater","$id":"0"},{"_position":{"x":-216.8808,"y":-377.4862},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"1"},{"_condition":{"specifiedTagOnly":true,"objectTag":"StarAttack","saveGameObjectAs":{"_name":""},"saveContactPoint":{"_name":""},"saveContactNormal":{"_name":""},"$type":"NodeCanvas.Tasks.Conditions.CheckCollision2D_Rigidbody"},"_position":{"x":-469.1083,"y":-282.6258},"$type":"NodeCanvas.BehaviourTrees.Interruptor","$id":"2"},{"failureRemap":1,"_position":{"x":-427.45,"y":-155.0501},"$type":"NodeCanvas.BehaviourTrees.Remapper","$id":"3"},{"_position":{"x":-411.0533,"y":-26.7336},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"4"},{"_action":{"$type":"NodeCanvas.Tasks.Actions.SetBlackboardVariablesActionTask"},"_tag":"","_position":{"x":-1169.175,"y":447.6948},"_comment":"automaticaly
     updates the local variables in the blackboard","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"5"},{"_action":{"valueA":{"_name":"player_position","_targetVariableID":"98e49476-598e-48e1-856e-e182df39a939"},"valueB":{},"$type":"NodeCanvas.Tasks.Actions.SetVariable`1[[UnityEngine.Vector2,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"_position":{"x":-884.0,"y":451.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"6"},{"_action":{"$type":"NodeCanvas.Tasks.Actions.GetPlayerLocationActionTask"},"_position":{"x":-636.0,"y":450.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"7"},{"_action":{"parameter":{"_value":"dedede_animState"},"parameterHashID":{},"setTo":{},"overrideAgent":{"_type":"UnityEngine.Animator","_name":"dedede_animator","_targetVariableID":"fd2afd1c-883d-446c-8d4a-ca2514f8b88b"},"$type":"NodeCanvas.Tasks.Actions.MecanimSetInt"},"_position":{"x":-382.3238,"y":450.7564},"_comment":"idle
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"_position":{"x":-883.0,"y":450.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"6"},{"_action":{"$type":"NodeCanvas.Tasks.Actions.GetPlayerLocationActionTask"},"_position":{"x":-636.0,"y":451.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"7"},{"_action":{"parameter":{"_value":"dedede_animState"},"parameterHashID":{},"setTo":{},"overrideAgent":{"_type":"UnityEngine.Animator","_name":"dedede_animator","_targetVariableID":"fd2afd1c-883d-446c-8d4a-ca2514f8b88b"},"$type":"NodeCanvas.Tasks.Actions.MecanimSetInt"},"_position":{"x":-382.3238,"y":452.0892},"_comment":"idle
     anim","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"8"},{"_condition":{"bossParameter":{"_name":"bossParams","_targetVariableID":"dd7b7517-655d-47c4-a675-d095506e8cb2"},"$type":"NodeCanvas.Tasks.Conditions.BossTimerConditionTask"},"_position":{"x":-116.9277,"y":450.7688},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"9"},{"_action":{"valueA":{"_name":"player_position","_targetVariableID":"98e49476-598e-48e1-856e-e182df39a939"},"valueB":{},"$type":"NodeCanvas.Tasks.Actions.SetVariable`1[[UnityEngine.Vector2,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"_position":{"x":95.64999,"y":451.755},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"10"},{"_action":{"$type":"NodeCanvas.Tasks.Actions.GetPlayerLocationActionTask"},"_position":{"x":332.0613,"y":451.8301},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"11"},{"childWeights":[{"_value":1.5},{"_value":1.2},{"_value":1.0},{"_value":1.5}],"failChance":{},"_position":{"x":1686.333,"y":165.5966},"$type":"NodeCanvas.BehaviourTrees.ProbabilitySelector","$id":"12"},{"_position":{"x":915.2092,"y":458.6823},"_comment":"Hammer\n","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"13"},{"_action":{"parameter":{"_value":"dedede_animState"},"parameterHashID":{},"setTo":{"_value":2},"overrideAgent":{"_type":"UnityEngine.Animator","_name":"dedede_animator","_targetVariableID":"fd2afd1c-883d-446c-8d4a-ca2514f8b88b"},"$type":"NodeCanvas.Tasks.Actions.MecanimSetInt"},"_position":{"x":-473.3326,"y":733.4401},"_comment":"run
-    with hammer anim","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"14"},{"_action":{"distanceThreshold":0.5,"speed":1.05,"$type":"NodeCanvas.Tasks.Actions.MoveTowardsPlayerActionTask"},"_position":{"x":-194.7139,"y":733.9579},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"15"},{"_action":{"parameter":{"_value":"dedede_animState"},"parameterHashID":{},"setTo":{"_value":3},"overrideAgent":{"_type":"UnityEngine.Animator","_name":"dedede_animator","_targetVariableID":"fd2afd1c-883d-446c-8d4a-ca2514f8b88b"},"$type":"NodeCanvas.Tasks.Actions.MecanimSetInt"},"_position":{"x":58.81966,"y":731.0087},"_comment":"hammer
-    swing anticipation anim","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"16"},{"_condition":{"bossParameter":{},"typeOfTimer":1,"customTimeout":0.3,"$type":"NodeCanvas.Tasks.Conditions.BossTimerConditionTask"},"_position":{"x":314.0333,"y":731.8249},"$type":"NodeCanvas.BehaviourTrees.WaitUntil","$id":"17"},{"_position":{"x":914.9216,"y":743.4387},"_comment":"\n","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"18"},{"_action":{"parameter":{"_value":"dedede_animState"},"parameterHashID":{},"setTo":{"_value":4},"overrideAgent":{"_type":"UnityEngine.Animator","_name":"dedede_animator","_targetVariableID":"fd2afd1c-883d-446c-8d4a-ca2514f8b88b"},"$type":"NodeCanvas.Tasks.Actions.MecanimSetInt"},"_position":{"x":-246.54,"y":1052.113},"_comment":"hammer
-    swing anim","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"19"},{"_action":{"$type":"NodeCanvas.Tasks.Actions.SwingHammerActionTask"},"_position":{"x":31.7597,"y":1051.603},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"20"},{"_condition":{"bossParameter":{},"typeOfTimer":1,"customTimeout":0.36,"$type":"NodeCanvas.Tasks.Conditions.BossTimerConditionTask"},"_position":{"x":246.5366,"y":1048.762},"$type":"NodeCanvas.BehaviourTrees.WaitUntil","$id":"21"},{"_action":{"spawnStarCount":1,"spawnStarTransform":1,"$type":"NodeCanvas.Tasks.Actions.SpawnStarActionTask"},"_position":{"x":467.4407,"y":1053.298},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"22"},{"_condition":{"bossParameter":{},"typeOfTimer":1,"customTimeout":0.61,"$type":"NodeCanvas.Tasks.Conditions.BossTimerConditionTask"},"_position":{"x":646.8486,"y":1054.0},"$type":"NodeCanvas.BehaviourTrees.WaitUntil","$id":"23"},{"_action":{"enabledType":1,"$type":"NodeCanvas.Tasks.Actions.SwingHammerActionTask"},"_position":{"x":871.6575,"y":1056.535},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"24"},{"_position":{"x":1685.878,"y":427.4652},"_comment":"Jump","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"25"},{"_action":{"parameter":{"_value":"dedede_animState"},"parameterHashID":{},"setTo":{"_value":5},"overrideAgent":{"_type":"UnityEngine.Animator","_name":"dedede_animator","_targetVariableID":"fd2afd1c-883d-446c-8d4a-ca2514f8b88b"},"$type":"NodeCanvas.Tasks.Actions.MecanimSetInt"},"_position":{"x":1235.621,"y":557.264},"_comment":"Charging
-    Jump anim","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"26"},{"_condition":{"bossParameter":{},"typeOfTimer":1,"customTimeout":1.0,"$type":"NodeCanvas.Tasks.Conditions.BossTimerConditionTask"},"_position":{"x":1487.993,"y":556.0021},"$type":"NodeCanvas.BehaviourTrees.WaitUntil","$id":"27"},{"_action":{"parameter":{"_value":"dedede_animState"},"parameterHashID":{},"setTo":{"_value":6},"overrideAgent":{"_type":"UnityEngine.Animator","_name":"dedede_animator","_targetVariableID":"fd2afd1c-883d-446c-8d4a-ca2514f8b88b"},"$type":"NodeCanvas.Tasks.Actions.MecanimSetInt"},"_position":{"x":1695.0,"y":559.0},"_comment":"Charging
-    Jump anim","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"28"},{"_action":{"gravity":-3.84,"maxJumpHeight":1.2,"jumpTimeToComplete":1.4,"$type":"NodeCanvas.Tasks.Actions.SetJumpActionTask"},"_position":{"x":1958.41,"y":559.7521},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"29"},{"_action":{"spawnStarCount":2,"spawnStarTransform":2,"$type":"NodeCanvas.Tasks.Actions.SpawnStarActionTask"},"_position":{"x":2119.0,"y":561.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"30"},{"_position":{"x":2935.876,"y":457.5504},"_comment":"Puff","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"31"},{"_action":{"parameter":{"_value":"dedede_animState"},"parameterHashID":{},"setTo":{"_value":8},"overrideAgent":{"_type":"UnityEngine.Animator","_name":"dedede_animator","_targetVariableID":"fd2afd1c-883d-446c-8d4a-ca2514f8b88b"},"$type":"NodeCanvas.Tasks.Actions.MecanimSetInt"},"_position":{"x":2377.634,"y":604.1061},"_comment":"Charging
-    Jump anim","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"32"},{"_action":{"maxHeightFromGround":0.4,"riseSpeed":1.0,"$type":"NodeCanvas.Tasks.Actions.PuffUpStartActionTask"},"_position":{"x":2633.829,"y":606.4183},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"33"},{"_condition":{"bossParameter":{},"typeOfTimer":1,"customTimeout":0.98,"$type":"NodeCanvas.Tasks.Conditions.BossTimerConditionTask"},"_position":{"x":2809.902,"y":606.7498},"$type":"NodeCanvas.BehaviourTrees.WaitUntil","$id":"34"},{"_action":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.ApproachActionTask"},{"launchUpForce":14.5,"maxSpeed":0.64,"speed":1.5,"accelX":1.28,"gravity":2.21,"$type":"NodeCanvas.Tasks.Actions.SteerActionTask"}],"$type":"NodeCanvas.Framework.ActionList"},"_position":{"x":3008.936,"y":609.5728},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"35"},{"_action":{"parameter":{"_value":"dedede_animState"},"parameterHashID":{},"setTo":{"_value":9},"overrideAgent":{"_type":"UnityEngine.Animator","_name":"dedede_animator","_targetVariableID":"fd2afd1c-883d-446c-8d4a-ca2514f8b88b"},"$type":"NodeCanvas.Tasks.Actions.MecanimSetInt"},"_position":{"x":3175.958,"y":610.6589},"_comment":"Charging
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"_position":{"x":95.64999,"y":451.755},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"10"},{"_action":{"$type":"NodeCanvas.Tasks.Actions.GetPlayerLocationActionTask"},"_position":{"x":332.0613,"y":451.8301},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"11"},{"childWeights":[{"_value":1.3},{"_value":0.9},{"_value":0.3},{"_value":1.5}],"failChance":{},"_position":{"x":1686.333,"y":165.5966},"$type":"NodeCanvas.BehaviourTrees.ProbabilitySelector","$id":"12"},{"_position":{"x":914.1082,"y":458.6823},"_comment":"Hammer\n","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"13"},{"_action":{"parameter":{"_value":"dedede_animState"},"parameterHashID":{},"setTo":{"_value":2},"overrideAgent":{"_type":"UnityEngine.Animator","_name":"dedede_animator","_targetVariableID":"fd2afd1c-883d-446c-8d4a-ca2514f8b88b"},"$type":"NodeCanvas.Tasks.Actions.MecanimSetInt"},"_position":{"x":-471.3326,"y":732.4401},"_comment":"run
+    with hammer anim","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"14"},{"_action":{"distanceThreshold":0.5,"speed":1.05,"$type":"NodeCanvas.Tasks.Actions.MoveTowardsPlayerActionTask"},"_position":{"x":-194.7139,"y":732.9579},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"15"},{"_action":{"parameter":{"_value":"dedede_animState"},"parameterHashID":{},"setTo":{"_value":3},"overrideAgent":{"_type":"UnityEngine.Animator","_name":"dedede_animator","_targetVariableID":"fd2afd1c-883d-446c-8d4a-ca2514f8b88b"},"$type":"NodeCanvas.Tasks.Actions.MecanimSetInt"},"_position":{"x":58.81966,"y":731.0087},"_comment":"hammer
+    swing anticipation anim","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"16"},{"_condition":{"bossParameter":{"_value":1},"typeOfTimer":1,"customTimeout":0.3,"$type":"NodeCanvas.Tasks.Conditions.BossTimerConditionTask"},"_position":{"x":314.0333,"y":731.8249},"$type":"NodeCanvas.BehaviourTrees.WaitUntil","$id":"17"},{"_position":{"x":914.9216,"y":743.4387},"_comment":"\n","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"18"},{"_action":{"parameter":{"_value":"dedede_animState"},"parameterHashID":{},"setTo":{"_value":4},"overrideAgent":{"_type":"UnityEngine.Animator","_name":"dedede_animator","_targetVariableID":"fd2afd1c-883d-446c-8d4a-ca2514f8b88b"},"$type":"NodeCanvas.Tasks.Actions.MecanimSetInt"},"_position":{"x":-246.54,"y":1052.113},"_comment":"hammer
+    swing anim","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"19"},{"_action":{"$type":"NodeCanvas.Tasks.Actions.SwingHammerActionTask"},"_position":{"x":31.7597,"y":1051.603},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"20"},{"_condition":{"bossParameter":{"_value":1},"typeOfTimer":1,"customTimeout":0.22,"$type":"NodeCanvas.Tasks.Conditions.BossTimerConditionTask"},"_position":{"x":246.5366,"y":1048.762},"$type":"NodeCanvas.BehaviourTrees.WaitUntil","$id":"21"},{"_action":{"spawnStarCount":1,"spawnStarTransform":2,"$type":"NodeCanvas.Tasks.Actions.SpawnStarActionTask"},"_position":{"x":467.4407,"y":1053.298},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"22"},{"_condition":{"bossParameter":{"_value":1},"typeOfTimer":1,"customTimeout":0.31,"$type":"NodeCanvas.Tasks.Conditions.BossTimerConditionTask"},"_position":{"x":646.8486,"y":1054.0},"$type":"NodeCanvas.BehaviourTrees.WaitUntil","$id":"23"},{"_action":{"enabledType":1,"$type":"NodeCanvas.Tasks.Actions.SwingHammerActionTask"},"_position":{"x":871.6575,"y":1056.535},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"24"},{"_position":{"x":1685.878,"y":427.4652},"_comment":"Jump","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"25"},{"_action":{"parameter":{"_value":"dedede_animState"},"parameterHashID":{},"setTo":{"_value":5},"overrideAgent":{"_type":"UnityEngine.Animator","_name":"dedede_animator","_targetVariableID":"fd2afd1c-883d-446c-8d4a-ca2514f8b88b"},"$type":"NodeCanvas.Tasks.Actions.MecanimSetInt"},"_position":{"x":1235.621,"y":557.264},"_comment":"Charging
+    Jump anim","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"26"},{"_condition":{"bossParameter":{"_value":1},"typeOfTimer":1,"customTimeout":1.0,"$type":"NodeCanvas.Tasks.Conditions.BossTimerConditionTask"},"_position":{"x":1487.993,"y":556.0021},"$type":"NodeCanvas.BehaviourTrees.WaitUntil","$id":"27"},{"_action":{"parameter":{"_value":"dedede_animState"},"parameterHashID":{},"setTo":{"_value":6},"overrideAgent":{"_type":"UnityEngine.Animator","_name":"dedede_animator","_targetVariableID":"fd2afd1c-883d-446c-8d4a-ca2514f8b88b"},"$type":"NodeCanvas.Tasks.Actions.MecanimSetInt"},"_position":{"x":1695.0,"y":559.0},"_comment":"Charging
+    Jump anim","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"28"},{"_action":{"gravity":-3.84,"maxJumpHeight":1.2,"jumpTimeToComplete":1.4,"$type":"NodeCanvas.Tasks.Actions.SetJumpActionTask"},"_position":{"x":1958.41,"y":559.7521},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"29"},{"_action":{"spawnStarCount":2,"spawnStarTransform":3,"$type":"NodeCanvas.Tasks.Actions.SpawnStarActionTask"},"_position":{"x":2119.0,"y":561.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"30"},{"_position":{"x":2935.876,"y":457.5504},"_comment":"Puff","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"31"},{"_action":{"parameter":{"_value":"dedede_animState"},"parameterHashID":{},"setTo":{"_value":8},"overrideAgent":{"_type":"UnityEngine.Animator","_name":"dedede_animator","_targetVariableID":"fd2afd1c-883d-446c-8d4a-ca2514f8b88b"},"$type":"NodeCanvas.Tasks.Actions.MecanimSetInt"},"_position":{"x":2377.634,"y":604.1061},"_comment":"Charging
+    Jump anim","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"32"},{"_action":{"maxHeightFromGround":0.4,"riseSpeed":1.0,"$type":"NodeCanvas.Tasks.Actions.PuffUpStartActionTask"},"_position":{"x":2633.829,"y":606.4183},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"33"},{"_condition":{"bossParameter":{"_value":1},"typeOfTimer":1,"customTimeout":0.98,"$type":"NodeCanvas.Tasks.Conditions.BossTimerConditionTask"},"_position":{"x":2809.902,"y":606.7498},"$type":"NodeCanvas.BehaviourTrees.WaitUntil","$id":"34"},{"_action":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.ApproachActionTask"},{"launchUpForce":14.5,"maxSpeed":0.64,"speed":1.5,"accelX":1.28,"gravity":2.21,"$type":"NodeCanvas.Tasks.Actions.SteerActionTask"}],"$type":"NodeCanvas.Framework.ActionList"},"_position":{"x":3008.936,"y":609.5728},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"35"},{"_action":{"parameter":{"_value":"dedede_animState"},"parameterHashID":{},"setTo":{"_value":9},"overrideAgent":{"_type":"UnityEngine.Animator","_name":"dedede_animator","_targetVariableID":"fd2afd1c-883d-446c-8d4a-ca2514f8b88b"},"$type":"NodeCanvas.Tasks.Actions.MecanimSetInt"},"_position":{"x":3175.958,"y":610.6589},"_comment":"Charging
     Jump anim","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"36"},{"_action":{"rbGravity":1.0,"$type":"NodeCanvas.Tasks.Actions.ReturnToGroundActionTask"},"_position":{"x":3427.665,"y":611.0004},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"37"},{"_position":{"x":4213.557,"y":485.3817},"_comment":"Dive","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"38"},{"_action":{"parameter":{"_value":"dedede_animState"},"parameterHashID":{},"setTo":{"_value":1},"overrideAgent":{"_type":"UnityEngine.Animator","_name":"dedede_animator","_targetVariableID":"fd2afd1c-883d-446c-8d4a-ca2514f8b88b"},"$type":"NodeCanvas.Tasks.Actions.MecanimSetInt"},"_position":{"x":3748.684,"y":600.5455},"_comment":"walk
     anim","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"39"},{"_action":{"distanceThreshold":0.5,"speed":0.5,"$type":"NodeCanvas.Tasks.Actions.MoveTowardsPlayerActionTask"},"_position":{"x":4027.304,"y":602.0635},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"40"},{"_action":{"parameter":{"_value":"dedede_animState"},"parameterHashID":{},"setTo":{"_value":11},"overrideAgent":{"_type":"UnityEngine.Animator","_name":"dedede_animator","_targetVariableID":"fd2afd1c-883d-446c-8d4a-ca2514f8b88b"},"$type":"NodeCanvas.Tasks.Actions.MecanimSetInt"},"_position":{"x":4267.84,"y":599.1146},"_comment":"dive
-    anim","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"41"},{"_action":{"maxDiveTime":1.2,"decrementSpeed":1.0,"diveSpeed":1.94,"$type":"NodeCanvas.Tasks.Actions.DiveActionTask"},"_position":{"x":4574.342,"y":599.4926},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"42"},{"_position":{"x":45.07175,"y":-276.4693},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"43"},{"_action":{"parameter":{"_value":"dedede_animState"},"parameterHashID":{},"setTo":{"_value":10},"overrideAgent":{"_type":"UnityEngine.Animator","_name":"dedede_animator","_targetVariableID":"fd2afd1c-883d-446c-8d4a-ca2514f8b88b"},"$type":"NodeCanvas.Tasks.Actions.MecanimSetInt"},"_position":{"x":-183.1035,"y":-191.2188},"_comment":"run
-    with hammer anim","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"44"},{"_condition":{"bossParameter":{},"typeOfTimer":1,"customTimeout":0.46,"$type":"NodeCanvas.Tasks.Conditions.BossTimerConditionTask"},"_position":{"x":95.93469,"y":-187.2353},"$type":"NodeCanvas.BehaviourTrees.WaitUntil","$id":"45"},{"_action":{"minValue":{"_value":1},"maxValue":{"_value":4},"intVariable":{"_name":"numberOfHammerSwings","_targetVariableID":"c1cb3603-e3a6-4cc3-a766-29b4c61f69f6"},"$type":"NodeCanvas.Tasks.Actions.SetIntRandom"},"_position":{"x":525.144,"y":732.5491},"$type":"NodeCanvas.BehaviourTrees.ActionNode"},{"repeatTimes":{"_name":"numberOfHammerSwings","_targetVariableID":"c1cb3603-e3a6-4cc3-a766-29b4c61f69f6"},"_position":{"x":1745.084,"y":1127.277},"$type":"NodeCanvas.BehaviourTrees.Repeater"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"43"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"7"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"8"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"9"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"10"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"11"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"12"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"12"},"_targetNode":{"$ref":"13"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"12"},"_targetNode":{"$ref":"25"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"12"},"_targetNode":{"$ref":"31"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"12"},"_targetNode":{"$ref":"38"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"13"},"_targetNode":{"$ref":"14"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"13"},"_targetNode":{"$ref":"15"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"13"},"_targetNode":{"$ref":"16"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"13"},"_targetNode":{"$ref":"17"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"13"},"_targetNode":{"$ref":"18"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"18"},"_targetNode":{"$ref":"19"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"18"},"_targetNode":{"$ref":"20"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"18"},"_targetNode":{"$ref":"21"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"18"},"_targetNode":{"$ref":"22"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"18"},"_targetNode":{"$ref":"23"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"18"},"_targetNode":{"$ref":"24"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"25"},"_targetNode":{"$ref":"26"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"25"},"_targetNode":{"$ref":"27"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"25"},"_targetNode":{"$ref":"28"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"25"},"_targetNode":{"$ref":"29"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"25"},"_targetNode":{"$ref":"30"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"31"},"_targetNode":{"$ref":"32"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"31"},"_targetNode":{"$ref":"33"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"31"},"_targetNode":{"$ref":"34"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"31"},"_targetNode":{"$ref":"35"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"31"},"_targetNode":{"$ref":"36"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"31"},"_targetNode":{"$ref":"37"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"38"},"_targetNode":{"$ref":"39"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"38"},"_targetNode":{"$ref":"40"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"38"},"_targetNode":{"$ref":"41"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"38"},"_targetNode":{"$ref":"42"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"43"},"_targetNode":{"$ref":"44"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"43"},"_targetNode":{"$ref":"45"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"bossParams":{"_value":3,"_name":"bossParams","_id":"dd7b7517-655d-47c4-a675-d095506e8cb2","$type":"NodeCanvas.Framework.Variable`1[[SO_BossParameters,
+    anim","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"41"},{"_action":{"maxDiveTime":0.35,"decrementSpeed":1.0,"diveSpeed":1.51,"$type":"NodeCanvas.Tasks.Actions.DiveActionTask"},"_position":{"x":4574.342,"y":599.4926},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"42"},{"_position":{"x":45.07175,"y":-276.4693},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"43"},{"_action":{"parameter":{"_value":"dedede_animState"},"parameterHashID":{},"setTo":{"_value":10},"overrideAgent":{"_type":"UnityEngine.Animator","_name":"dedede_animator","_targetVariableID":"fd2afd1c-883d-446c-8d4a-ca2514f8b88b"},"$type":"NodeCanvas.Tasks.Actions.MecanimSetInt"},"_position":{"x":-183.1035,"y":-191.2188},"_comment":"run
+    with hammer anim","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"44"},{"_condition":{"bossParameter":{"_value":1},"typeOfTimer":1,"customTimeout":0.46,"$type":"NodeCanvas.Tasks.Conditions.BossTimerConditionTask"},"_position":{"x":95.93469,"y":-187.2353},"$type":"NodeCanvas.BehaviourTrees.WaitUntil","$id":"45"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"43"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"7"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"8"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"9"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"10"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"11"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"12"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"12"},"_targetNode":{"$ref":"13"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"12"},"_targetNode":{"$ref":"25"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"12"},"_targetNode":{"$ref":"31"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"12"},"_targetNode":{"$ref":"38"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"13"},"_targetNode":{"$ref":"14"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"13"},"_targetNode":{"$ref":"15"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"13"},"_targetNode":{"$ref":"16"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"13"},"_targetNode":{"$ref":"17"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"13"},"_targetNode":{"$ref":"18"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"18"},"_targetNode":{"$ref":"19"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"18"},"_targetNode":{"$ref":"20"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"18"},"_targetNode":{"$ref":"21"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"18"},"_targetNode":{"$ref":"22"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"18"},"_targetNode":{"$ref":"23"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"18"},"_targetNode":{"$ref":"24"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"25"},"_targetNode":{"$ref":"26"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"25"},"_targetNode":{"$ref":"27"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"25"},"_targetNode":{"$ref":"28"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"25"},"_targetNode":{"$ref":"29"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"25"},"_targetNode":{"$ref":"30"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"31"},"_targetNode":{"$ref":"32"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"31"},"_targetNode":{"$ref":"33"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"31"},"_targetNode":{"$ref":"34"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"31"},"_targetNode":{"$ref":"35"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"31"},"_targetNode":{"$ref":"36"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"31"},"_targetNode":{"$ref":"37"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"38"},"_targetNode":{"$ref":"39"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"38"},"_targetNode":{"$ref":"40"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"38"},"_targetNode":{"$ref":"41"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"38"},"_targetNode":{"$ref":"42"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"43"},"_targetNode":{"$ref":"44"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"43"},"_targetNode":{"$ref":"45"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"bossParams":{"_value":1,"_name":"bossParams","_id":"dd7b7517-655d-47c4-a675-d095506e8cb2","$type":"NodeCanvas.Framework.Variable`1[[SO_BossParameters,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"dedede_animator":{"_value":4,"_name":"dedede_animator","_id":"fd2afd1c-883d-446c-8d4a-ca2514f8b88b","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Animator,
     UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"starPrefab":{"_value":5,"_name":"starPrefab","_id":"c82e60ed-deff-4ef0-a6a1-a7b8693b3deb","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"dedede_directionFacing":{"_name":"dedede_directionFacing","_id":"5a42def2-538c-4285-a27f-969cd8155616","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
@@ -8200,9 +8255,9 @@ MonoBehaviour:
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
   _boundGraphObjectReferences:
   - {fileID: 0}
+  - {fileID: 11400000, guid: 4604d2c842d012f4f879044d5d97008f, type: 2}
   - {fileID: 123359193}
   - {fileID: 46519343}
-  - {fileID: 11400000, guid: 4604d2c842d012f4f879044d5d97008f, type: 2}
   - {fileID: 874599520}
   - {fileID: 8589077968280470293, guid: 0de5c57ad6b0fe64ea841fbf82eeb74e, type: 3}
   - {fileID: 1154737618}
@@ -8210,7 +8265,7 @@ MonoBehaviour:
     _version: 3.25
     _category: 
     _comments: 
-    _translation: {x: 1491, y: 72}
+    _translation: {x: -1724, y: -11}
     _zoomFactor: 1
   _firstActivation: 0
   _enableAction: 0

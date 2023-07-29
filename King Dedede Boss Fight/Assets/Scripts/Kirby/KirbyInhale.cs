@@ -6,6 +6,7 @@ public class KirbyInhale : MonoBehaviour
 {
     //References
     [SerializeField] private SO_KirbyValueParams kirbyParams;
+
     private KirbyInputHandler input;
     private KirbyMovement kirbyMov;
     private KirbyAnimationController animController;
@@ -27,6 +28,7 @@ public class KirbyInhale : MonoBehaviour
 
     private void Awake()
     {
+
         input = GetComponent<KirbyInputHandler>();
 
         kirbyMov = GetComponent<KirbyMovement>();
@@ -56,8 +58,8 @@ public class KirbyInhale : MonoBehaviour
         bool canPerformInhale = input.IsHoldingInhale && !hasFood && canInhale && !kirbyMov.isPuffed && !kirbyMov.isShielding;
         bool letGoOfInhale = !input.IsHoldingInhale;
         bool letGoOfInhaleNotPuffed = letGoOfInhale && !kirbyMov.isPuffed && !kirbyMov.isShielding;
-        bool exhaleInAir = input.inhalePressedInput.WasPerformedThisFrame() && kirbyMov.isPuffed && !kirbyMov.isShielding;
-        bool canThrowFood = input.inhalePressedInput.WasPerformedThisFrame() && hasFood;
+        bool exhaleInAir = input.playerInput.actions["Inhale"].WasPressedThisFrame() && kirbyMov.isPuffed && !kirbyMov.isShielding;
+        bool canThrowFood = input.playerInput.actions["Inhale"].WasPressedThisFrame() && hasFood;
 
         if (canPerformInhale)
         {

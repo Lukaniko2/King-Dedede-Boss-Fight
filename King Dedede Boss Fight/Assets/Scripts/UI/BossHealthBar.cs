@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BossHealthBar : MonoBehaviour
 {
+    [Header("Scriptable Object")]
+    [SerializeField] private SO_BossDefeatedEventSender bossDefeatedSender;
+
     //References
     private UIManager uiManager;
     private RectTransform bossRectTransform;
@@ -54,12 +57,12 @@ public class BossHealthBar : MonoBehaviour
         //Decrement boss health when hit. Called from the UIManager Class
         bossRectTransform.sizeDelta -= new Vector2(bossHealthDecrement, 0);
 
-        bool bossIsDefeated = bossRectTransform.sizeDelta.x <= 0;
+        bool bossIsDefeated = bossRectTransform.sizeDelta.x <= 0.25f;
         if (bossIsDefeated)
         {
-            GameManager.bossIsDefeated = true;
-            AudioManager.Instance.PlaySound("ui_bossDefeated");
+            bossDefeatedSender.BossIsDefeatedSend();
 
+            //disables the blue boss bar
             gameObject.SetActive(false);
             
         }

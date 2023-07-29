@@ -1,0 +1,784 @@
+fileFormatVersion: 2
+guid: 244c486d29eace64abcdc39d8c84c462
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 45
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 909
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1ae99af508c1f5489c5071e4008ed81
+      internalID: -961729984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_1
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 909
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f4e86a9f657e7e4c88e28a9a24a99a2
+      internalID: -59540184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_2
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 909
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 245493b21dae5434794676728ad2de23
+      internalID: 371037328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_3
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 909
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22ef40bf580d5414ab3e847e715e894a
+      internalID: -1135892254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_4
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 909
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6e59ad1addbc084b811a17b7990c90e
+      internalID: 1402601596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_5
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 909
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7639c22379585db4d950e2e9270b0f15
+      internalID: 1496788959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_6
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 909
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85ef6187774fbeb4bbb4baba5bcdcb8b
+      internalID: -471964115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 808
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fb4780f10c64f54cbdf72f76d12c21e
+      internalID: 1490735916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_8
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 808
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91f3f9797e5ab964a94125e3e767174d
+      internalID: -871119906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_9
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 808
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ac5c3ee0f616484681d4b7cbab2d569
+      internalID: -1801656780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_10
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 808
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 255d04b8345102e42b0633bf762de52a
+      internalID: -620931876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_11
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 808
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75d24267b11eaac4782140b097fbfcda
+      internalID: -2147013454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_12
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 808
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a38d552fcc2b73f4cab5ccd8ded40032
+      internalID: 536391663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_13
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 808
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af61f7ba34b5ec24aba8191dbe7da9e5
+      internalID: -1668119504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 707
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d27832692cac15f4b9e61c496488a357
+      internalID: -446736702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_15
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 707
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06d693e916ad80c44be1aecfce702bf5
+      internalID: -1923780599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_16
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 707
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 178305433bfb65849aae35061f65cd9e
+      internalID: -2035160478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_17
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 707
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10ec41bc30f5e7e4fa6b23822782e28d
+      internalID: 1921990455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_18
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 707
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36c6d78c215c93e43b013e035f571514
+      internalID: 1441383375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_19
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 707
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cdc5f1637c0428419799e58063bb2b0
+      internalID: 1380109268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_20
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 707
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c937e803f53ad948838cddc214cdc4d
+      internalID: -1062870875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 606
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a11605cd0e2b0e45b83a0e688426aff
+      internalID: 1884481732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_22
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 606
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95df8de8984b12344a6776a08973a654
+      internalID: -73002816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_23
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 606
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af51042c5aa0de84284f3e3b5813e8b4
+      internalID: 1056196880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_24
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 606
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce79e86e4e863ad4ab5c1e30415904fd
+      internalID: 1522764942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_25
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 606
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c0a0ee4a2d7cb045ac93b4954043a52
+      internalID: -125161388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_26
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 606
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04f5cdd915ba8324e8f101f5a380f028
+      internalID: 2009393933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_27
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 606
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 208593c9d9a402a49b57b1def41e5596
+      internalID: 1680653365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: King Dedede SpriteSheet_After Separation_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 505
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9225150830da1c44ac7693587b8855f
+      internalID: -2054528009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      King Dedede SpriteSheet_After Separation_11: -2147013454
+      King Dedede SpriteSheet_After Separation_0: -961729984
+      King Dedede SpriteSheet_After Separation_1: -59540184
+      King Dedede SpriteSheet_After Separation_8: -871119906
+      King Dedede SpriteSheet_After Separation_25: -125161388
+      King Dedede SpriteSheet_After Separation_7: 1490735916
+      King Dedede SpriteSheet_After Separation_26: 2009393933
+      King Dedede SpriteSheet_After Separation_18: 1441383375
+      King Dedede SpriteSheet_After Separation_20: -1062870875
+      King Dedede SpriteSheet_After Separation_3: -1135892254
+      King Dedede SpriteSheet_After Separation_12: 536391663
+      King Dedede SpriteSheet_After Separation_6: -471964115
+      King Dedede SpriteSheet_After Separation_28: -2054528009
+      King Dedede SpriteSheet_After Separation_22: -73002816
+      King Dedede SpriteSheet_After Separation_23: 1056196880
+      King Dedede SpriteSheet_After Separation_5: 1496788959
+      King Dedede SpriteSheet_After Separation_27: 1680653365
+      King Dedede SpriteSheet_After Separation_16: -2035160478
+      King Dedede SpriteSheet_After Separation_4: 1402601596
+      King Dedede SpriteSheet_After Separation_19: 1380109268
+      King Dedede SpriteSheet_After Separation_21: 1884481732
+      King Dedede SpriteSheet_After Separation_2: 371037328
+      King Dedede SpriteSheet_After Separation_13: -1668119504
+      King Dedede SpriteSheet_After Separation_14: -446736702
+      King Dedede SpriteSheet_After Separation_10: -620931876
+      King Dedede SpriteSheet_After Separation_17: 1921990455
+      King Dedede SpriteSheet_After Separation_9: -1801656780
+      King Dedede SpriteSheet_After Separation_24: 1522764942
+      King Dedede SpriteSheet_After Separation_15: -1923780599
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

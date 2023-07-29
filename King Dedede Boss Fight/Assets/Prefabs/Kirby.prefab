@@ -9712,16 +9712,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3321072267914774596}
-  - component: {fileID: 3321072267914774597}
-  - component: {fileID: 3321072267914774598}
+  - component: {fileID: 3321072267914774604}
   - component: {fileID: 2313537209847345614}
   - component: {fileID: 3321072267914774599}
   - component: {fileID: 3321072267914774594}
   - component: {fileID: 3321072267914774600}
   - component: {fileID: 3321072267914774601}
   - component: {fileID: 3321072267914774602}
-  - component: {fileID: 3321072267914774604}
   - component: {fileID: 3321072267914774605}
+  - component: {fileID: 3321072267914774598}
+  - component: {fileID: 3321072267914774597}
   - component: {fileID: 3321072267914774606}
   - component: {fileID: 3321072267914774595}
   m_Layer: 6
@@ -9749,43 +9749,100 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &3321072267914774597
-CircleCollider2D:
+--- !u!114 &3321072267914774604
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3321072267914774607}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.1045844
---- !u!50 &3321072267914774598
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3321072267914774607}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 10
-  m_LinearDrag: 10
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: f32026cf74e72f04f8c2f34c412cfbe1, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3321072267914774605}
+        m_TargetAssemblyTypeName: KirbyInputHandler, Assembly-CSharp
+        m_MethodName: OnHoriMovement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 96bd7c90-385a-47fc-beeb-a4e2983b1dbd
+    m_ActionName: Player/HoriMovement[/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3321072267914774605}
+        m_TargetAssemblyTypeName: KirbyInputHandler, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 754d344e-e76e-4726-b8a9-bb038c7f6d42
+    m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3321072267914774605}
+        m_TargetAssemblyTypeName: KirbyInputHandler, Assembly-CSharp
+        m_MethodName: OnInhale
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8a73a331-4a57-49a1-bf60-8cb7e1ee6028
+    m_ActionName: Player/Inhale[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3321072267914774605}
+        m_TargetAssemblyTypeName: KirbyInputHandler, Assembly-CSharp
+        m_MethodName: OnShield
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 30841924-b90a-41b4-8ebd-aea8773438fb
+    m_ActionName: Player/Shield[/Mouse/rightButton]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!114 &2313537209847345614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9881,100 +9938,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inhaleLoop: 0
   canPlayStar: 0
---- !u!114 &3321072267914774604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3321072267914774607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: f32026cf74e72f04f8c2f34c412cfbe1, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3321072267914774605}
-        m_TargetAssemblyTypeName: KirbyInputHandler, Assembly-CSharp
-        m_MethodName: OnHoriMovement
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 96bd7c90-385a-47fc-beeb-a4e2983b1dbd
-    m_ActionName: Player/HoriMovement[/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3321072267914774605}
-        m_TargetAssemblyTypeName: KirbyInputHandler, Assembly-CSharp
-        m_MethodName: OnJump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 754d344e-e76e-4726-b8a9-bb038c7f6d42
-    m_ActionName: Player/Jump[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3321072267914774605}
-        m_TargetAssemblyTypeName: KirbyInputHandler, Assembly-CSharp
-        m_MethodName: OnInhale
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 8a73a331-4a57-49a1-bf60-8cb7e1ee6028
-    m_ActionName: Player/Inhale[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3321072267914774605}
-        m_TargetAssemblyTypeName: KirbyInputHandler, Assembly-CSharp
-        m_MethodName: OnShield
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 30841924-b90a-41b4-8ebd-aea8773438fb
-    m_ActionName: Player/Shield[/Mouse/rightButton]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &3321072267914774605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9987,105 +9950,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e934b28e88046468cb35ace699ac47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpPressedInput:
-    m_Name: Jump Pressed Input
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: ede9122a-7ca8-4074-993f-acf5253d0e5a
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: df1aa8a6-3854-46cf-8152-f00cf2c32593
-      m_Path: <Keyboard>/space
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Jump Pressed Input
-      m_Flags: 0
-    - m_Name: 
-      m_Id: 24dab4c7-452f-4a9a-8f97-e8b6155b2be3
-      m_Path: <Gamepad>/buttonEast
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Jump Pressed Input
-      m_Flags: 0
-    m_Flags: 0
-  inhalePressedInput:
-    m_Name: Inhale Pressed Input
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 55d41a30-fd91-4fa0-8810-236bde51e37c
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: e4d00b1c-92bd-407e-8bd0-2701748419f7
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Inhale Pressed Input
-      m_Flags: 0
-    - m_Name: 
-      m_Id: c527dde4-867a-4050-bee6-9f5a6ca78ae6
-      m_Path: <Gamepad>/buttonSouth
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Inhale Pressed Input
-      m_Flags: 0
-    m_Flags: 0
-  shieldPressedInput:
-    m_Name: Shield Pressed Input
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 6dba1a6c-9b84-4b4d-be20-9fbcb00924ab
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: bc541d9e-ecb7-4c9a-a3d9-0d850c7ab934
-      m_Path: <Mouse>/rightButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Shield Pressed Input
-      m_Flags: 0
-    - m_Name: 
-      m_Id: 433a460e-6100-45ac-98ac-0c8102f5fe7e
-      m_Path: <Gamepad>/rightTrigger
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Shield Pressed Input
-      m_Flags: 0
-    - m_Name: 
-      m_Id: fcafb0ac-606f-4229-99b2-d9d8ae671630
-      m_Path: <Gamepad>/leftTrigger
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Shield Pressed Input
-      m_Flags: 0
-    - m_Name: 
-      m_Id: ad71508c-579a-4152-8b35-1c41db1fcb7b
-      m_Path: <Gamepad>/leftShoulder
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Shield Pressed Input
-      m_Flags: 0
-    - m_Name: 
-      m_Id: ea04f483-f8d7-4010-810a-2c2f98f7fd95
-      m_Path: <Gamepad>/rightShoulder
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Shield Pressed Input
-      m_Flags: 0
-    m_Flags: 0
+--- !u!50 &3321072267914774598
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3321072267914774607}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 10
+  m_LinearDrag: 10
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!58 &3321072267914774597
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3321072267914774607}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.1045844
 --- !u!212 &3321072267914774606
 SpriteRenderer:
   m_ObjectHideFlags: 0

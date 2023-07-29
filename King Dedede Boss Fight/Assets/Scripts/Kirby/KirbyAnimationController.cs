@@ -63,7 +63,7 @@ public class KirbyAnimationController : MonoBehaviour
         {
             animator.SetInteger("animState", 1);
 
-            if(canPlayRunSound)
+            if(canPlayRunSound && kirbyMovement.isGrounded)
             {
                 AudioManager.Instance.PlaySound("k_run");
                 canPlayRunSound = false;
@@ -89,10 +89,7 @@ public class KirbyAnimationController : MonoBehaviour
         bool anim_BigFall = kirbyMovement.bigFall && !kirbyInhale.inhaling;
 
         if (anim_PuffStart)
-        {
             animator.SetInteger("animState", 16);
-        }
-            
 
         else if (anim_PuffIdle)
             animator.SetInteger("animState", 17);

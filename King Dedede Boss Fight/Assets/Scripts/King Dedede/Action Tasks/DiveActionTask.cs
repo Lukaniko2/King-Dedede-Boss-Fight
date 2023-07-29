@@ -1,6 +1,7 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 namespace NodeCanvas.Tasks.Actions{
 
@@ -12,12 +13,12 @@ namespace NodeCanvas.Tasks.Actions{
 		public float diveSpeed;
 
 		private Vector2 playerTransform;
-		private float currentDiveTime;
 		private float currentDiveSpeed;
 
 		private bool isDiving;
+		private int directionOfTravel;
 
-		protected override string OnInit(){
+        protected override string OnInit(){
 			
 			isDiving = blackboard.GetVariableValue<bool>("isDiving");
 
@@ -32,32 +33,28 @@ namespace NodeCanvas.Tasks.Actions{
 				playerTransform = blackboard.GetVariableValue<Vector2>("player_position");
 				currentDiveSpeed = diveSpeed;
 				blackboard.SetVariableValue("isDiving", true);
-			}
+
+                Vector2 dir = playerTransform - (Vector2)agent.transform.position;
+                directionOfTravel = (int)Mathf.Sign(dir.x);
+            }
 		}
 
 		protected override void OnUpdate(){
-			currentDiveTime += Time.deltaTime;
-			
 			//lunge at player
 			Vector2 pos = agent.transform.position;
-			Vector2 dir = playerTransform - pos;
 
 			//decrement the speed for a slower stop
-			currentDiveSpeed -= decrementSpeed * Time.deltaTime;
+			currentDiveSpeed = Mathf.Lerp(currentDiveSpeed, 0, Time.deltaTime / maxDiveTime);
 
 			//Move the player
-			int directionOfTravel = (int)Mathf.Sign(dir.x);
 			pos += new Vector2(directionOfTravel * currentDiveSpeed * Time.deltaTime, 0);
 
 			agent.transform.position = pos;
-			
 
-			//if the dive ends, then reset values
-			bool diveTimeEnded = currentDiveTime >= maxDiveTime;
+            //if the dive ends, then reset values
+            bool diveTimeEnded = currentDiveSpeed < 0.1f;
 			if (diveTimeEnded)
             {
-				Debug.Log(currentDiveSpeed);
-				currentDiveTime = 0;
 				currentDiveSpeed = diveSpeed;
 				blackboard.SetVariableValue("isDiving", false);
 				EndAction(true);

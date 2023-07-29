@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class VictoryStars : MonoBehaviour
 {
-    
-    KirbyAnimationController anim;
+    /// <summary>
+    /// Plays the Kirby Dance Animation Once touched
+    /// </summary>
+    private KirbyAnimationController anim;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
-        anim = GameObject.Find("Kirby").GetComponent<KirbyAnimationController>();
+        anim = GameObject.FindObjectOfType<KirbyAnimationController>().GetComponent<KirbyAnimationController>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

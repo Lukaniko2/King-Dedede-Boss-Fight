@@ -6,12 +6,30 @@ using UnityEngine.InputSystem;
 public class KirbyInputHandler : MonoBehaviour
 {
     //values will be read by playerMovement and playerAnimationsScripts
+
+    public PlayerInput playerInput { get; private set; }
+    private void Update()
+    {
+        playerInput = GetComponent<PlayerInput>();
+    }
+
     //Movement
     private int horizontalMovement;
     public int HorizontalMovement
     {
         get => horizontalMovement;
         set => horizontalMovement = value;
+    }
+
+    //Setting the values of the inputs based on the context of the press
+    public void OnHoriMovement(InputAction.CallbackContext context)
+    {
+        if (!context.started)
+        {
+            Vector2 allDirections = context.ReadValue<Vector2>();
+            HorizontalMovement = (int)allDirections.x;
+        }
+      
     }
 
     //Jumping
@@ -21,7 +39,13 @@ public class KirbyInputHandler : MonoBehaviour
         get => isHoldingJump;
         set => isHoldingJump = value;
     }
-    public InputAction jumpPressedInput;
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (!context.started)
+            IsHoldingJump = context.action.triggered;
+
+    }
 
     //Inhaling
     private bool isHoldingInhale;
@@ -30,7 +54,12 @@ public class KirbyInputHandler : MonoBehaviour
         get => isHoldingInhale;
         set => isHoldingInhale = value;
     }
-    public InputAction inhalePressedInput;
+
+    public void OnInhale(InputAction.CallbackContext context)
+    {
+        if (!context.started)
+            IsHoldingInhale = context.action.triggered;
+    }
 
     //Shielding
     private bool isHoldingShield;
@@ -39,45 +68,13 @@ public class KirbyInputHandler : MonoBehaviour
         get => isHoldingShield;
         set => isHoldingShield = value;
     }
-    public InputAction shieldPressedInput;
 
-    private void Awake()
-    {
-        jumpPressedInput.Enable();
-        shieldPressedInput.Enable();
-        inhalePressedInput.Enable();
-    }
-
-    //Setting the values of the inputs based on the context of the press
-    public void OnHoriMovement(InputAction.CallbackContext context)
-    {
-        if (context.started)
-            return;
-
-        Vector2 allDirections = context.ReadValue<Vector2>();
-        HorizontalMovement = (int)allDirections.x;
-    }
-
-    public void OnJump(InputAction.CallbackContext context)
-    {
-        if (context.started)
-            return;
-
-        IsHoldingJump = context.action.triggered;
-    }
-
-    public void OnInhale(InputAction.CallbackContext context)
-    {
-        if (context.started)
-            return;
-
-        IsHoldingInhale = context.action.triggered;
-    }
     public void OnShield(InputAction.CallbackContext context)
     {
         if (context.started)
             return;
 
-        IsHoldingShield = context.action.triggered;
+       IsHoldingShield = context.action.triggered;
+
     }
 }

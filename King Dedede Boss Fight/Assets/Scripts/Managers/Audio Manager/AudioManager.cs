@@ -1,5 +1,4 @@
-﻿using UnityEngine.Audio;
-using System;
+﻿
 using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,6 +8,8 @@ using Unity.VisualScripting;
 /// </summary>
 public class AudioManager : Singleton<AudioManager>
 {
+    [SerializeField] private float lowerSoundSpeed;
+
     public List<Sound> Sounds = new List<Sound>();
 
     private bool musicCanPlay = true;
@@ -64,6 +65,17 @@ public class AudioManager : Singleton<AudioManager>
         }
     }
 
+    //Stops All background music from playing
+    public void StopMusic()
+    {
+        foreach(Sound sound in Sounds)
+        {
+            if(sound.type == Sound.Type.music)
+            {
+                sound.source.Stop();
+            }
+        }
+    }
     //Changes the volume of all sounds.
     public void SetGameVolume(float newVolume)
     {
@@ -105,5 +117,33 @@ public class AudioManager : Singleton<AudioManager>
                 }
             }
         }
+    }
+
+    public void LowerMusicVolume()
+    {
+        StartCoroutine(LoweringMusic());
+    }
+
+    IEnumerator<WaitForSeconds> LoweringMusic()
+    {
+        string bgMusicName = "bgm_bossMusic";
+
+        Debug.Log("InC OUR");
+        foreach (Sound sound in Sounds)
+        {
+            if (sound.type == Sound.Type.music)
+            {
+                Sound selectedSound = Sounds.Find(s => s.name == bgMusicName);
+
+                while (selectedSound.source.volume > 0.0f)
+                {
+                    sound.source.volume -= Time.deltaTime;
+                    yield return new WaitForSeconds(lowerSoundSpeed);
+                }
+                
+                
+            }
+        }
+     
     }
 }

@@ -7,10 +7,11 @@ public class KirbyMovement : MonoBehaviour
 {
     //Components
     private KirbyInputHandler input;
+
     [SerializeField] private SO_KirbyValueParams kirbyParams;
 
     private KirbyInhale kirbyInhale;
-    private KirbyAnimationController animation;
+    private KirbyAnimationController animationComp;
   
     public Vector2 speed;
 
@@ -37,15 +38,17 @@ public class KirbyMovement : MonoBehaviour
     public bool isPuffed = false;
     public bool isHoldingJumpPuff = false;
 
-
+    //1 is right, -1 is left
     private float directionFacing = 1;
+
+
     private void Awake()
     {
         input = GetComponent<KirbyInputHandler>();
 
         circleCol = GetComponent<CircleCollider2D>();
         kirbyInhale = GetComponent<KirbyInhale>();
-        animation = GetComponent<KirbyAnimationController>();
+        animationComp = GetComponent<KirbyAnimationController>();
 
         //Setting the player's regular gravity
         codeGravity = kirbyParams.gravityRegularJump; 
@@ -87,7 +90,7 @@ public class KirbyMovement : MonoBehaviour
         else
         {
             isGrounded = false;
-            animation.canPlayStar = true;
+            animationComp.canPlayStar = true;
         }
 
         Debug.DrawLine(transform.position, transform.position + Vector3.down * (circleCol.radius + 0.01f), Color.red);
@@ -109,7 +112,7 @@ public class KirbyMovement : MonoBehaviour
             codeMinSpeed = kirbyParams.minSpeedRegularJump;
 
         }
-        else if (input.jumpPressedInput.WasPerformedThisFrame() && !isGrounded && !kirbyInhale.inhaling && !kirbyInhale.hasFood && !isShielding)
+        else if (input.playerInput.actions["Jump"].WasPressedThisFrame() && !isGrounded && !kirbyInhale.inhaling && !kirbyInhale.hasFood && !isShielding)
         {
             //play JumpPuff Sound
             AudioManager.Instance.StopSound("k_puffJump");

@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14efe5d8432ae834c943b3aa7d6fd0b4, type: 3}
-  m_Name: King Dedede Parameters
+  m_Script: {fileID: 11500000, guid: 421c1daaa5084fc4faaf301735ab4c92, type: 3}
+  m_Name: BossDefeatEventSender
   m_EditorClassIdentifier: 
-  bossName: King Dedede
-  bossDamageDecrement: 101
-  bossSpeedSlow: 0
-  bossSpeed: 1.05
-  maxIdleTime: 3
