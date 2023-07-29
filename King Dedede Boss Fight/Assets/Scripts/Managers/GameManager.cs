@@ -2,22 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
     public static bool gameEnded = false;
     public static bool bossIsDefeated = false;
 
+
     //Scriptable Objects
     [SerializeField] private SO_BossDefeatedEventSender SObossDefeat;
 
     private void Awake()
     {
+
         SObossDefeat.bossIsDefeatedEvent.AddListener(IsDefeated);
+
     }
 
     private void Start()
     {
+        gameEnded = false;
         AudioManager.Instance.PlaySound("bgm_bossMusic");
 
     }
@@ -34,8 +39,8 @@ public class GameManager : MonoBehaviour
         //Flicker Screen
         SObossDefeat.FlickerScreenSend();
 
-        //Play Boss Defeat Animation
+        AudioManager.Instance.PlaySound("d_scream");
 
-        //Spawn Star
+        //the star and defeat animation is spawned in a class on the boss called 'BossCheckDefeat'
     }
 }

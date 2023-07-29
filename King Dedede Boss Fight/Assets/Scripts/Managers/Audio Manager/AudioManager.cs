@@ -128,7 +128,6 @@ public class AudioManager : Singleton<AudioManager>
     {
         string bgMusicName = "bgm_bossMusic";
 
-        Debug.Log("InC OUR");
         foreach (Sound sound in Sounds)
         {
             if (sound.type == Sound.Type.music)

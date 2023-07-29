@@ -70,7 +70,7 @@ public class KirbyHealthBar : MonoBehaviour
 
             bool lostAllHealth = kirbyDetails.KirbyHealth <= 0;
             if (lostAllHealth)
-                anim.SendMessage("Outro", "Outro3");
+                anim.SendMessage("Outro", "LoseGameAnimation");
 
             //Set them invincible for a certain period of time
             currentInvincibilityTime = Time.time;

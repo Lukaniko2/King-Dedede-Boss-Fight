@@ -144,11 +144,10 @@ public class KirbyMovement : MonoBehaviour
         Vector2 pos = transform.position;
 
         //move Kirby
-
+        
         //update the x position by multiplying it by speed and direction
         if (!kirbyInhale.frozen && !GameManager.gameEnded)
             pos.x += speed.x * input.HorizontalMovement * Time.fixedDeltaTime;
-        
 
         //if let go of jump button, simulate gravity
         if (!isHoldingJump)
@@ -191,6 +190,7 @@ public class KirbyMovement : MonoBehaviour
 
     private void FlipSprite()
     {
+       
         if (input.HorizontalMovement != 0)
             directionFacing = input.HorizontalMovement;
 

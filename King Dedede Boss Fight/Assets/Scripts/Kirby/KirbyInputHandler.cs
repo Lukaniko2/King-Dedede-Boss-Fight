@@ -8,10 +8,11 @@ public class KirbyInputHandler : MonoBehaviour
     //values will be read by playerMovement and playerAnimationsScripts
 
     public PlayerInput playerInput { get; private set; }
-    private void Update()
+    private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
     }
+
 
     //Movement
     private int horizontalMovement;

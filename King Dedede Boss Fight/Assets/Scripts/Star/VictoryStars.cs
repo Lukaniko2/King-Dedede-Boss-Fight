@@ -22,7 +22,7 @@ public class VictoryStars : MonoBehaviour
             return;
 
 
-        anim.SendMessage("Outro", "Outro2");
+        anim.SendMessage("Outro", "WinGameAnimation");
         Destroy(this.gameObject);
        
     }

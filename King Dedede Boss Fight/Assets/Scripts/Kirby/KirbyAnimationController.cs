@@ -1,7 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using ParadoxNotion.Services;
+
 public class KirbyAnimationController : MonoBehaviour
 {
     //Kirby References
@@ -214,41 +215,59 @@ public class KirbyAnimationController : MonoBehaviour
     }
 
 
-    //For end of game when beat boss
+    //For end of game when beat boss. 
     void Outro(string winLose)
     {
         //this method will be called on by other scripts
         Invoke(winLose, 1);
     }
-    void Outro2()
+
+    //Called from the' Boss Health Bar' class, Ultimately from the 'Victory Star'
+    void WinGameAnimation()
     {
         //If kirby touches the victory star after beating the boss, play the victory dance then reset the scene
         GameManager.gameEnded = true;
+
+        DisableInputsAndParticles();
 
         animator.SetInteger("animState", 19);
 
         AudioManager.Instance.StopAll();
         AudioManager.Instance.PlaySound("bgm_victory");
+
+        Invoke("ReloadScene", 4f);
     }
-    void Outro3()
+
+    //called from the Kirby Health Bar class
+    void LoseGameAnimation()
     {
         //If kirby loses all health, then lose
         GameManager.gameEnded = true;
+
+        DisableInputsAndParticles();
 
         animator.SetInteger("animState", 20);
 
         AudioManager.Instance.StopAll();
         AudioManager.Instance.PlaySound("bgm_defeat");
+
+        Invoke("ReloadScene", 4f);
     }
 
-    //for reloading the scene after the player wins or loses
-    void InvokeScene()
+    private void DisableInputsAndParticles()
     {
-        //this method will be called on by other scripts
-        Invoke("ReinstateScene", 1);
+        input.playerInput.enabled = false;
+
+        int childCount = transform.childCount;
+        for(int i = 0; i < childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(false);
+        }
+       
     }
-    void ReinstateScene()
+    void ReloadScene()
     {
+
         SceneManager.LoadScene(0);
     }
 

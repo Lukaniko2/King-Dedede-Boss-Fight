@@ -39,7 +39,6 @@ namespace NodeCanvas.Tasks.Actions{
             if (completeTime)
             {
                 currentPuffTime = 0;
-                Debug.Log(completeTime);
                 EndAction(true);
 
             }
