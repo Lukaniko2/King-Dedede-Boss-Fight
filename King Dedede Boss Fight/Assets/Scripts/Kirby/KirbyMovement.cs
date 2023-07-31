@@ -22,7 +22,7 @@ public class KirbyMovement : MonoBehaviour
     public float codeGravity; //will switch between regular gravity and puff gravity
     public float codeMinSpeed;
 
-    private float currentJumpHoldTime;
+    [HideInInspector] public float currentJumpHoldTime;
     public bool isGrounded = false;
     public bool isHoldingJump = false;
     public bool isJumping = false; //for the fall animation
@@ -32,7 +32,7 @@ public class KirbyMovement : MonoBehaviour
 
     //for falling animation
     public bool bigFall = false;
-    float bigFallTimer = 0.4f;
+    private float bigFallTimer = 1f;
 
     //puff jump variables
     public bool isPuffed = false;
@@ -112,7 +112,8 @@ public class KirbyMovement : MonoBehaviour
             codeMinSpeed = kirbyParams.minSpeedRegularJump;
 
         }
-        else if (input.playerInput.actions["Jump"].WasPressedThisFrame() && !isGrounded && !kirbyInhale.inhaling && !kirbyInhale.hasFood && !isShielding)
+        //if the player jumps in the air, then make them puff
+        else if (input.playerInput.actions["Jump"].WasPressedThisFrame() && !isGrounded && !kirbyInhale.inhaling && !kirbyInhale.hasFood && !isShielding && !kirbyInhale.frozen)
         {
             //play JumpPuff Sound
             AudioManager.Instance.StopSound("k_puffJump");
@@ -121,7 +122,7 @@ public class KirbyMovement : MonoBehaviour
 
             //if they are in the air and they press jump
             speed.y = kirbyParams.jumpPuffForce;
-
+            isJumping = true;
             isPuffed = true;
             isHoldingJumpPuff = true;
             Invoke("ContinuePuffAnimation", 0.05f);
@@ -173,8 +174,9 @@ public class KirbyMovement : MonoBehaviour
         else if (!isGrounded && isPuffed)
         {
             pos.y += speed.y * Time.fixedDeltaTime;
-            bigFall = false;
 
+            currentJumpHoldTime = Time.time; //resets the big fall
+            bigFall = false;
 
         }
         else if (isGrounded)

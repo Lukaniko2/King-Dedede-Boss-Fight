@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: King Dedede Parameters
   m_EditorClassIdentifier: 
   bossName: King Dedede
-  bossDamageDecrement: 101
+  bossDamageDecrement: 20
   bossSpeedSlow: 0
   bossSpeed: 1.05
   maxIdleTime: 3

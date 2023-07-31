@@ -123,6 +123,10 @@ public class KirbyInhale : MonoBehaviour
         kirbyMov.codeGravity = 0;
         kirbyMov.speed.y = 0;
         frozen = true;
+
+        kirbyMov.currentJumpHoldTime = Time.time; //resets the big fall
+        kirbyMov.bigFall = false;
+
         Invoke("ReinsstateGravity", 0.3f);
 
         //Right after Kirby freezes in air, they can't keep holding LMB to suck right away so we set canInhale to false and set it back to true in the Invoke

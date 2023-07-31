@@ -26,7 +26,7 @@ public class KirbyShield : MonoBehaviour
 
     private void Shielding()
     { 
-        bool pressedShieldButtonAudio = (input.playerInput.actions["Shield"].WasPerformedThisFrame() || input.playerInput.actions["Shield"].WasReleasedThisFrame() )&& !kirbyMov.isPuffed && !kirbyInhale.inhaling && !kirbyInhale.hasFood;
+        bool pressedShieldButtonAudio = (input.playerInput.actions["Shield"].WasPressedThisFrame() || input.playerInput.actions["Shield"].WasReleasedThisFrame() )&& !kirbyMov.isPuffed && !kirbyInhale.inhaling && !kirbyInhale.hasFood;
         bool canShield = input.IsHoldingShield && !kirbyMov.isPuffed && !kirbyInhale.inhaling && !kirbyInhale.hasFood;
         
         //Debug.Log(input.playerInput.actions["Shield"].WasPerformedThisFrame());

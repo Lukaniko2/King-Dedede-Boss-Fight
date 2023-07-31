@@ -84,11 +84,12 @@ public class KirbyAnimationController : MonoBehaviour
         bool anim_Exhaled = kirbyInhale.frozen;
 
         bool anim_JumpingUp = kirbyMovement.isHoldingJump || kirbyMovement.speed.y > 0 && !kirbyInhale.inhaling;
-        bool anim_PeakOfJump = kirbyMovement.isJumping && kirbyMovement.speed.y <= 0 && !kirbyInhale.inhaling;
+        bool anim_PeakOfJump = (kirbyMovement.isJumping || !kirbyMovement.isGrounded) && kirbyMovement.speed.y <= 0 && !kirbyInhale.inhaling;
 
         bool anim_IsFalling = kirbyMovement.speed.y <= 0 && !kirbyMovement.isGrounded && !kirbyMovement.bigFall && !kirbyInhale.inhaling;
-        bool anim_BigFall = kirbyMovement.bigFall && !kirbyInhale.inhaling;
-
+        bool anim_BigFall = kirbyMovement.bigFall && !kirbyInhale.inhaling && !kirbyMovement.isShielding;
+        bool anim_fellButDidNotJump = !kirbyMovement.isGrounded && !kirbyMovement.isJumping 
+                                        && !anim_PuffStart && !anim_PuffIdle && !anim_Exhaled;
         if (anim_PuffStart)
             animator.SetInteger("animState", 16);
 
@@ -109,8 +110,14 @@ public class KirbyAnimationController : MonoBehaviour
         else if (anim_IsFalling)
             animator.SetInteger("animState", 4);
 
-        else if (anim_BigFall)
+        if (anim_BigFall)
             animator.SetInteger("animState", 5);
+
+        else if(anim_fellButDidNotJump)
+            animator.SetInteger("animState", 4);
+
+
+
 
         //Inhaling Anims
         bool anim_InhaleStart = kirbyInhale.inhaling && inhaleLoop == false;

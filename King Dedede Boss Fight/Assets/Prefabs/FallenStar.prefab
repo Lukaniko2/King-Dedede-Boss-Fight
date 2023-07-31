@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 0.76
   moveSpeed: 2.03
-  travelTime: 0.17
+  travelTime: 0.2
   direction: 0
   position: {x: 0, y: 0}
   decreaseScaleSpeed: 0.98

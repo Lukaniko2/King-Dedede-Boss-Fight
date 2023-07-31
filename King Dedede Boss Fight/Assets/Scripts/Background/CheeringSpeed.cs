@@ -19,6 +19,8 @@ public class CheeringSpeed : MonoBehaviour
 
     private void SpeedUpCheering(ChangeHealth temp)
     {
+        AudioManager.Instance.StopSound("d_crowdCheer");
+        AudioManager.Instance.PlaySound("d_crowdCheer");
         animator.speed = speedOfCheering;
         Invoke("ReturnToNormalSpeed", maxTimeBeforeNormal);
     }
