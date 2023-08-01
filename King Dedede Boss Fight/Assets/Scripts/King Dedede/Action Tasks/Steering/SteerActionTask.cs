@@ -17,11 +17,12 @@ namespace NodeCanvas.Tasks.Actions{
         public float speed;
 		public float accelX;
 		public float gravity;
+		public float maxHeightY;
+        public Vector2 velocity;
 
-		private float currentPuffTime;
-		private Vector2 velocity;
+        private float currentPuffTime;
 		private float maxPuffTime;
-
+		private bool goingUp;
         protected override string OnInit(){
 			rb = agent.GetComponent<Rigidbody2D>();
 			col = agent.GetComponent<CircleCollider2D>();
@@ -31,26 +32,27 @@ namespace NodeCanvas.Tasks.Actions{
 		}
 
 		protected override void OnExecute(){
-            
-			
+			velocity.y = 0;
+			velocity.x = 0;
         }
 
 		protected override void OnUpdate(){
             currentPuffTime += Time.deltaTime;
 
             //Move Boss based on velocity from approach task
-            Vector2 direction = blackboard.GetVariableValue<Vector2>("puffSteerVel");
+            int direction = blackboard.GetVariableValue<int>("dedede_directionFacing");
 
 			Vector2 pos = agent.transform.position;
 
 			//adjust velocity based on acceleration in X and Y direction
-			velocity.x += accelX * direction.x * Time.deltaTime;
+			velocity.x += accelX * direction * Time.deltaTime;
 			velocity.y -= gravity * Time.deltaTime;
 
 			//clamp speed so King Dedede doesn't keep getting faster
 			velocity.x = Mathf.Clamp(velocity.x, -maxSpeed, maxSpeed);
+            velocity.y = Mathf.Clamp(velocity.y, -maxHeightY, maxHeightY);
 
-			//set the position of King Dedede
+            //set the position of King Dedede
             pos += velocity * Time.deltaTime;
 			agent.transform.position =  pos;
 
@@ -68,7 +70,8 @@ namespace NodeCanvas.Tasks.Actions{
             }
 
             bool completeTime = currentPuffTime >= maxPuffTime;
-			if(completeTime)
+			bool velocityThreshold = velocity.y > -0.2f && velocity.y < 0.2f;
+			if(completeTime && velocityThreshold)
 			{
 				currentPuffTime = 0;
 				EndAction(true);

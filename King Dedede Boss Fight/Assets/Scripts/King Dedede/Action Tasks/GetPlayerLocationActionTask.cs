@@ -22,10 +22,17 @@ namespace NodeCanvas.Tasks.Actions{
 				EndAction(true);
                 return;
             }
-				
 
-			//Get the player's current position when this is called
-            Vector2 playerPos = blackboard.GetVariableValue<Transform>("auto_playerLocation").position;
+            Transform kirbyTransform = blackboard.GetVariableValue<Transform>("auto_playerLocation");
+
+            //now we check to see if kirby is puffed for the hammer attack to jump up or not
+            KirbyMovement kirbyMov = kirbyTransform.gameObject.GetComponent<KirbyMovement>();
+            bool kirbyinAir = kirbyMov.isPuffed;
+
+            blackboard.SetVariableValue("kirby_inAir", kirbyinAir);
+
+            //Get the player's current position when this is called
+            Vector2 playerPos = kirbyTransform.position;
             blackboard.SetVariableValue("player_position", playerPos);
 
 

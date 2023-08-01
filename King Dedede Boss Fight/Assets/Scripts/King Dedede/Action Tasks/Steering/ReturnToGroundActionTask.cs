@@ -12,6 +12,12 @@ namespace NodeCanvas.Tasks.Actions{
 
 		//Variables
 		public float rbGravity;
+		public float maxTimeBeforeFalling;
+		public float puffUpwardsSpeed;
+
+		private float currentTime;
+		private int directionFacing;
+        private Vector2 speed;
 
 		protected override string OnInit(){
 			col = agent.GetComponent<CircleCollider2D>();
@@ -20,13 +26,39 @@ namespace NodeCanvas.Tasks.Actions{
 		}
 
 		protected override void OnExecute(){
-			rb.bodyType = RigidbodyType2D.Dynamic;
-			rb.gravityScale = rbGravity;
 
-			AudioManager.Instance.PlaySound("k_exhale");
-		}
+
+            directionFacing = blackboard.GetVariableValue<int>("dedede_directionFacing");
+
+			//Puff Out
+			GameObject puff = GameObject.Instantiate(blackboard.GetVariableValue<GameObject>("puffOutPrefab"), agent.transform.position, Quaternion.identity);
+			puff.GetComponent<PuffOut>().PuffSetup(directionFacing);
+
+            AudioManager.Instance.PlaySound("k_exhale");
+
+			currentTime = Time.time;
+			speed.y = puffUpwardsSpeed;
+        }
 
 		protected override void OnUpdate(){
+
+			Vector2 pos = agent.transform.position;
+			Vector2 directionToPuffOut = new Vector2(0.5f, 1);
+
+			//horizontal movement
+			pos.x += directionToPuffOut.x * -directionFacing * Time.deltaTime;
+
+			if(Time.time - currentTime >= maxTimeBeforeFalling)
+			{
+                speed.y -= directionToPuffOut.y * rbGravity * Time.deltaTime;
+            }
+
+			pos.y += directionToPuffOut.y * speed.y * Time.deltaTime;
+			
+
+            agent.transform.position = pos;
+
+
 
             if (CheckGrounded())
             {
@@ -40,7 +72,7 @@ namespace NodeCanvas.Tasks.Actions{
         private bool CheckGrounded()
         {
             LayerMask groundLayer = LayerMask.GetMask("Ground");
-            bool overlap = Physics2D.Linecast(agent.transform.position, (Vector2)agent.transform.position + Vector2.down * (col.radius + 0.08f), groundLayer);
+            bool overlap = Physics2D.Linecast(agent.transform.position, (Vector2)agent.transform.position + Vector2.down * (col.radius + 0.1f), groundLayer);
 
             return overlap;
         }

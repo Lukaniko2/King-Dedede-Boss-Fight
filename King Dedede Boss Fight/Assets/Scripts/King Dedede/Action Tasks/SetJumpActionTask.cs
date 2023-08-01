@@ -13,13 +13,17 @@ namespace NodeCanvas.Tasks.Actions{
         /// <summary>
         /// Sets an arc to travel at given the positions of the boss, the player, and a height we want to jump at
         /// </summary>
+        public enum JumpType
+        {
+            Vertical,
+            Both
+        }
+        public JumpType jumpType;
 
         //Variables
         public float gravity;
         public float maxJumpHeight;
-		public float jumpTimeToComplete;
 
-        
 
         private Vector2 playerPos;
 		private Vector2 bossPos;
@@ -27,8 +31,9 @@ namespace NodeCanvas.Tasks.Actions{
 		private bool isJumping;
 		private float currentTime;
 
-		Vector2 speed;
-        CircleCollider2D col;
+        private Vector2 speed;
+        private CircleCollider2D col;
+
         protected override string OnInit(){
             col = agent.GetComponent<CircleCollider2D>();
             return null;
@@ -46,7 +51,7 @@ namespace NodeCanvas.Tasks.Actions{
             //forum that helped me: https://forum.unity.com/threads/jump-to-a-specific-position-without-rigidbody.922592/
             playerPos = blackboard.GetVariableValue<Vector2>("player_position");
 			bossPos = agent.transform.position;
-
+            
 			
 
 			CalculateSpeed();
@@ -56,17 +61,29 @@ namespace NodeCanvas.Tasks.Actions{
             currentTime += Time.deltaTime;
 
             //update position
-			Vector2 pos = agent.transform.position;
+            Vector2 pos = agent.transform.position;
 
+            
             pos = new Vector2(bossPos.x + speed.x * currentTime, bossPos.y + speed.y * currentTime + 0.5f * gravity * Mathf.Pow(currentTime, 2));
+            
+            //if it's the hammer swing, we just want Dedede to go straight up, so set the x pos to regular
+            if (jumpType == JumpType.Vertical)
+                pos.x = bossPos.x;
 
-			agent.transform.position = pos;
+           agent.transform.position = pos;
+
+            //check to see if they are at the apex of the jump
+            bool atApex = pos.y > maxJumpHeight + bossPos.y - 0.05f;
+
+            if(atApex)
+                blackboard.SetVariableValue("dedede_peakJump", true);
 
             //check to see if they landed on the ground and not right when the script activated (hence the 1)
             if(CheckGrounded() && currentTime > 1)
             {
                 currentTime = 0;
                 blackboard.SetVariableValue("isJumping", false);
+                blackboard.SetVariableValue("dedede_peakJump", false);
                 EndAction(true);
 			}
         }
@@ -75,7 +92,7 @@ namespace NodeCanvas.Tasks.Actions{
 			Vector2 diff = playerPos - bossPos;
 
             float speedY = Mathf.Sqrt(-2 * gravity * maxJumpHeight);
-
+            
             speed = new Vector2 ( diff.x * gravity / (-speedY - Mathf.Sqrt(Mathf.Abs(Mathf.Pow(speedY, 2) + 2 * gravity * diff.y))), speedY);
         }
         

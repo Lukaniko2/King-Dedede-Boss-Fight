@@ -355,15 +355,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5104985669869888168, guid: b4579495ff2f411498859cf29f869fc1, type: 3}
       propertyPath: _boundGraphSource._zoomFactor
-      value: 0.9535338
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5104985669869888168, guid: b4579495ff2f411498859cf29f869fc1, type: 3}
       propertyPath: _boundGraphSource._translation.x
-      value: 394.6286
+      value: -198
       objectReference: {fileID: 0}
     - target: {fileID: 5104985669869888168, guid: b4579495ff2f411498859cf29f869fc1, type: 3}
       propertyPath: _boundGraphSource._translation.y
-      value: -319.12216
+      value: -740
       objectReference: {fileID: 0}
     - target: {fileID: 5104985669869888175, guid: b4579495ff2f411498859cf29f869fc1, type: 3}
       propertyPath: m_RootOrder
@@ -2652,6 +2652,27 @@ MonoBehaviour:
   - name: d_hammerSwing
     clip: {fileID: 8300000, guid: e956f842b166fd8409bfa5b5a50e0093, type: 3}
     volume: 0.442
+    pitch: 1
+    looping: 0
+    source: {fileID: 0}
+    type: 0
+  - name: d_jump
+    clip: {fileID: 8300000, guid: fef8e7e2c0b4c6c44ae6be121831c8e5, type: 3}
+    volume: 0.205
+    pitch: 1
+    looping: 0
+    source: {fileID: 0}
+    type: 0
+  - name: d_dive
+    clip: {fileID: 8300000, guid: 91e4c6034a893d8429a8c27209d34219, type: 3}
+    volume: 0.48
+    pitch: 1
+    looping: 0
+    source: {fileID: 0}
+    type: 0
+  - name: d_fallJump
+    clip: {fileID: 8300000, guid: d8100278e6df16e4ea88aceb425e7161, type: 3}
+    volume: 0.541
     pitch: 1
     looping: 0
     source: {fileID: 0}

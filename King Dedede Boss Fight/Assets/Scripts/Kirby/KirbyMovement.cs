@@ -39,7 +39,7 @@ public class KirbyMovement : MonoBehaviour
     public bool isHoldingJumpPuff = false;
 
     //1 is right, -1 is left
-    private float directionFacing = 1;
+    [HideInInspector] public float kirbyDirectionFacing = 1;
 
 
     private void Awake()
@@ -110,6 +110,9 @@ public class KirbyMovement : MonoBehaviour
             isJumping = true;
             codeGravity = kirbyParams.gravityRegularJump;
             codeMinSpeed = kirbyParams.minSpeedRegularJump;
+
+            currentJumpHoldTime = Time.time; //resets the big fall
+            bigFall = false;
 
         }
         //if the player jumps in the air, then make them puff
@@ -194,9 +197,9 @@ public class KirbyMovement : MonoBehaviour
     {
        
         if (input.HorizontalMovement != 0)
-            directionFacing = input.HorizontalMovement;
+            kirbyDirectionFacing = input.HorizontalMovement;
 
-        transform.localScale = new Vector3(directionFacing, 1, 1);
+        transform.localScale = new Vector3(kirbyDirectionFacing, 1, 1);
 
     }
 

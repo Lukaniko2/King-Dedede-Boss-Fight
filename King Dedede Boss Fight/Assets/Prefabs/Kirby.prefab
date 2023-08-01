@@ -9872,6 +9872,7 @@ MonoBehaviour:
   speed: {x: 1, y: 0}
   codeGravity: 0
   codeMinSpeed: 0
+  currentJumpHoldTime: 0
   isGrounded: 0
   isHoldingJump: 0
   isJumping: 0
@@ -9907,6 +9908,7 @@ MonoBehaviour:
   kirbyParams: {fileID: 11400000, guid: 26a096ddc5708074aa80b7c7526adce5, type: 2}
   kirbyMouth: {fileID: 3321072268729439697}
   attackPrefab: {fileID: 5867129329245514423, guid: 629762d6b37a72a4e9475f6c93fa86ea, type: 3}
+  puffOutPrefab: {fileID: 1828324701053198294, guid: 5f0da039413f89b408a65f55bbf887c8, type: 3}
   frozen: 0
   hasFood: 0
   inhaling: 0

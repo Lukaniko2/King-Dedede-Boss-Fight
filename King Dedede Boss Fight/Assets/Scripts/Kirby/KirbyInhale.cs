@@ -14,6 +14,7 @@ public class KirbyInhale : MonoBehaviour
     //Components
     [SerializeField] private GameObject kirbyMouth;
     [SerializeField] private GameObject attackPrefab;
+    [SerializeField] private GameObject puffOutPrefab;
 
     //Variables
     public bool frozen = false;
@@ -127,7 +128,12 @@ public class KirbyInhale : MonoBehaviour
         kirbyMov.currentJumpHoldTime = Time.time; //resets the big fall
         kirbyMov.bigFall = false;
 
+        //spawn a puff since we exhaled
+        GameObject puff = Instantiate(puffOutPrefab, transform.position, Quaternion.identity);
+        puff.GetComponent<PuffOut>().PuffSetup((int)Mathf.Sign(kirbyMov.kirbyDirectionFacing));
+
         Invoke("ReinsstateGravity", 0.3f);
+
 
         //Right after Kirby freezes in air, they can't keep holding LMB to suck right away so we set canInhale to false and set it back to true in the Invoke
         
