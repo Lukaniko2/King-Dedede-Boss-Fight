@@ -15,6 +15,7 @@ public class KirbyInhale : MonoBehaviour
     [SerializeField] private GameObject kirbyMouth;
     [SerializeField] private GameObject attackPrefab;
     [SerializeField] private GameObject puffOutPrefab;
+    [SerializeField] private GameObject doublePuffPrefab;
 
     //Variables
     public bool frozen = false;
@@ -86,6 +87,11 @@ public class KirbyInhale : MonoBehaviour
             kirbyMov.codeMinSpeed = kirbyParams.minSpeedRegularJump;
             FreezeGravity();
 
+            //spawn a puff since we exhaled
+            GameObject puff = Instantiate(puffOutPrefab, transform.position, Quaternion.identity);
+            puff.GetComponent<PuffOut>().PuffSetup((int)Mathf.Sign(kirbyMov.kirbyDirectionFacing));
+
+
         }
         else if (letGoOfInhaleNotPuffed)
         {
@@ -107,6 +113,10 @@ public class KirbyInhale : MonoBehaviour
             hasFood = false;
 
             FreezeGravity();
+
+            //instantiate a double puff if on ground
+            if (kirbyMov.isGrounded)
+                Instantiate(doublePuffPrefab, transform.position, Quaternion.identity);
         }
 
         //For stopping audio if they get food
@@ -128,9 +138,6 @@ public class KirbyInhale : MonoBehaviour
         kirbyMov.currentJumpHoldTime = Time.time; //resets the big fall
         kirbyMov.bigFall = false;
 
-        //spawn a puff since we exhaled
-        GameObject puff = Instantiate(puffOutPrefab, transform.position, Quaternion.identity);
-        puff.GetComponent<PuffOut>().PuffSetup((int)Mathf.Sign(kirbyMov.kirbyDirectionFacing));
 
         Invoke("ReinsstateGravity", 0.3f);
 

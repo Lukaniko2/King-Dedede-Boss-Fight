@@ -32,5 +32,16 @@ public class SO_BossDefeatedEventSender : ScriptableObject
     {
         bossDefeatAnimationEvent.Invoke();
     }
-    
+
+    //Whenever the boss is hit, update their health 
+    [System.NonSerialized]
+    public UpdateHealthEvent updateHealthEvent = new UpdateHealthEvent();
+
+    public void UpdateBossHealthEventSend(float value)
+    {
+        updateHealthEvent.Invoke(value);
+    }
+
 }
+
+public class UpdateHealthEvent : UnityEvent<float> { }

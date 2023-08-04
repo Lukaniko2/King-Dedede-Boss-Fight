@@ -57,7 +57,10 @@ public class BossHealthBar : MonoBehaviour
         //Decrement boss health when hit. Called from the UIManager Class
         bossRectTransform.sizeDelta -= new Vector2(bossHealthDecrement, 0);
 
-        bool bossIsDefeated = bossRectTransform.sizeDelta.x <= 0.25f;
+        float health = bossRectTransform.sizeDelta.x;
+        bossDefeatedSender.UpdateBossHealthEventSend(health);
+
+        bool bossIsDefeated = health <= 0.25f;
         if (bossIsDefeated)
         {
             bossDefeatedSender.BossIsDefeatedSend();

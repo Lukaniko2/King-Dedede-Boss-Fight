@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     {
         gameEnded = false;
         AudioManager.Instance.PlaySound("bgm_bossMusic");
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
     }
 

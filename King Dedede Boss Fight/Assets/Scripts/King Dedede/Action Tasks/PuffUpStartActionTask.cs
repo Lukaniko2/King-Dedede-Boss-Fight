@@ -29,6 +29,7 @@ namespace NodeCanvas.Tasks.Actions{
 			if(!isPuffingUp)
 			{
 				groundHeight = agent.transform.position.y;
+				blackboard.SetVariableValue("groundHeight", groundHeight);
 				blackboard.SetVariableValue("isPuffingUp", true);
 			}
 

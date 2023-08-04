@@ -13,18 +13,35 @@ namespace NodeCanvas.Tasks.Actions{
         /// </summary>
 
         private Transform playerTransform;
+        private SO_BossParameters bossParameters;
+        private bool first = true; //need for setting health only second time because it starts off at 0
 
         protected override string OnInit(){
-			SO_BossParameters bossParameters = blackboard.GetVariableValue<SO_BossParameters>("bossParams");
+			bossParameters = blackboard.GetVariableValue<SO_BossParameters>("bossParams");
             playerTransform = GameObject.FindObjectOfType<PlayerInput>().transform;
 
             blackboard.SetVariableValue("auto_playerLocation", playerTransform);
             blackboard.SetVariableValue("auto_speed", bossParameters.bossSpeed);
-
-			return null;
+            blackboard.SetVariableValue("bossHealth", 100f);
+            return null;
         }
         protected override void OnExecute()
         {
+
+            //Check to see which type of speed we should be using
+            float currentHealth = agent.GetComponent<BossDetails>().health;
+
+            if (first)
+                first = false;
+            else
+                blackboard.SetVariableValue("bossHealth", currentHealth);
+
+
+            if (currentHealth < 50)
+            {
+                blackboard.SetVariableValue("auto_speed", bossParameters.bossSpeedFast);
+            }
+
             EndAction(true);
         }
 

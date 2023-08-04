@@ -7,6 +7,7 @@ public class Attack : MonoBehaviour
     //BossAnimationManager bossAnim;
     [SerializeField] private SO_AdjustHealth adjustHealth;
     [SerializeField] float horizontalForce;
+    [SerializeField] private GameObject hitParticles;
 
     //direction to move in
     private float travelDirection;
@@ -19,12 +20,18 @@ public class Attack : MonoBehaviour
     private void Awake()
     {
         AudioManager.Instance.PlaySound("k_attack");
+
+        Invoke("DestroyTheObject", 10);
+
+        Physics2D.IgnoreLayerCollision(0,9);
     }
 
     void Update()
     {
         //move star in direction
         transform.Translate(horizontalForce * TravelDirection * Time.deltaTime, 0, 0);
+
+        
     }
 
 
@@ -42,6 +49,12 @@ public class Attack : MonoBehaviour
             adjustHealth.changeBossHealthEvent.Invoke(ChangeHealth.Default_Damage);
         }
 
+        Instantiate(hitParticles, transform.position + Vector3.right * TravelDirection * 0.2f, Quaternion.identity);
+        DestroyTheObject();
+    }
+
+    private void DestroyTheObject()
+    {
         Destroy(this.gameObject);
     }
 }

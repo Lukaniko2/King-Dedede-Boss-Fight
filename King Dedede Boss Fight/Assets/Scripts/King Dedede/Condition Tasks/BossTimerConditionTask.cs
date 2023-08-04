@@ -22,6 +22,7 @@ namespace NodeCanvas.Tasks.Conditions{
 
         private float currentIdleTime;
         private float currentCustomTime;
+        private float currentHealth;
 
         protected override string OnInit(){
             //only if they need the boss params should it run. Else it's a custom time 
@@ -33,7 +34,9 @@ namespace NodeCanvas.Tasks.Conditions{
             return null;
 		}
 
-        protected override void OnEnable(){}
+        protected override void OnEnable(){
+            currentHealth = blackboard.GetVariableValue<float>("bossHealth");
+        }
 
         protected override bool OnCheck(){
 
@@ -48,14 +51,17 @@ namespace NodeCanvas.Tasks.Conditions{
                     bool timeoutCompleted = currentIdleTime <= 0;
 
                     if (timeoutCompleted)
-                        currentIdleTime = bossParameter.value.maxIdleTime;
+                        currentIdleTime = SetCurrentIdleTime();
 
                     return timeoutCompleted;
 
                 case TypeOfTimer.Custom:
 
                     //decrease time
-                    currentCustomTime -= Time.deltaTime;
+                    if(currentHealth > 50)
+                        currentCustomTime -= Time.deltaTime * bossParameter.value.bossSpeed;
+                    else
+                        currentCustomTime -= Time.deltaTime * bossParameter.value.bossSpeedFast;
 
                     bool timeoutCustomCompleted = currentCustomTime <= 0;
 
@@ -70,6 +76,17 @@ namespace NodeCanvas.Tasks.Conditions{
 
 		}
 
-        protected override void OnDisable(){ }
+        protected override void OnDisable()
+        {
+        }
+
+        private float SetCurrentIdleTime()
+        {
+            //setting it back to the default value based on the boss' health
+            if (currentHealth > 50)
+                return bossParameter.value.maxIdleTime;
+            else
+                return bossParameter.value.minIdleTime;
+        }
     }
 }

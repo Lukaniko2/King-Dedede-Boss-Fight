@@ -1,5 +1,6 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.Android;
 using static UnityEngine.GraphicsBuffer;
@@ -33,6 +34,7 @@ namespace NodeCanvas.Tasks.Actions{
 
         private Vector2 speed;
         private CircleCollider2D col;
+        private bool once = false;
 
         protected override string OnInit(){
             col = agent.GetComponent<CircleCollider2D>();
@@ -49,14 +51,24 @@ namespace NodeCanvas.Tasks.Actions{
 			blackboard.SetVariableValue("isJumping", true);
 
             //forum that helped me: https://forum.unity.com/threads/jump-to-a-specific-position-without-rigidbody.922592/
-            playerPos = blackboard.GetVariableValue<Vector2>("player_position");
-			bossPos = agent.transform.position;
-            
-			
 
-			CalculateSpeed();
+            once = false;
+            playerPos = blackboard.GetVariableValue<Vector2>("player_position");
+            bossPos = agent.transform.position;
+
+            CalculateSpeed();
         }
         protected override void OnUpdate(){
+
+            //if Dedede gets hit and is interupted during Jump, this will make sure we still recalculate
+            if(!once)
+            {
+                playerPos = blackboard.GetVariableValue<Vector2>("player_position");
+                bossPos = agent.transform.position;
+                CalculateSpeed();
+                once = true;
+            }
+            
             //increase the time for the time variable in equation
             currentTime += Time.deltaTime;
 
@@ -105,10 +117,13 @@ namespace NodeCanvas.Tasks.Actions{
             return overlap;
         }
 		protected override void OnStop(){
-			
-		}
+            //I need this and 'once' because before if dedede was hit mid air,
+            //it would not update with new player info. It will still calculate old position
+            currentTime = 0;
+            once = false;
+        }
 
-		protected override void OnPause(){
+        protected override void OnPause(){
 			
 		}
 	}

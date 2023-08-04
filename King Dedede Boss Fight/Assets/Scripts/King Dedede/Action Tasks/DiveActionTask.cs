@@ -17,6 +17,7 @@ namespace NodeCanvas.Tasks.Actions{
 
 		private bool isDiving;
 		private int directionOfTravel;
+		private float speedMultiplier;
 
         protected override string OnInit(){
 			
@@ -27,11 +28,14 @@ namespace NodeCanvas.Tasks.Actions{
 		}
 
 		protected override void OnExecute(){
-			//Only call this once, like a void start
-			if(!isDiving)
+
+            speedMultiplier = blackboard.GetVariableValue<float>("auto_speed");
+
+            //Only call this once, like a void start
+            if (!isDiving)
             {
 				playerTransform = blackboard.GetVariableValue<Vector2>("player_position");
-				currentDiveSpeed = diveSpeed;
+				currentDiveSpeed = diveSpeed * speedMultiplier;
 				blackboard.SetVariableValue("isDiving", true);
 
                 Vector2 dir = playerTransform - (Vector2)agent.transform.position;

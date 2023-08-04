@@ -102,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   adjustHealth: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
   horizontalForce: 4.5
+  hitParticles: {fileID: 1971683030336307519, guid: 5bea58eb539c6d54ebe6ad34a2dd68a9, type: 3}
 --- !u!58 &5867129329245514416
 CircleCollider2D:
   m_ObjectHideFlags: 0

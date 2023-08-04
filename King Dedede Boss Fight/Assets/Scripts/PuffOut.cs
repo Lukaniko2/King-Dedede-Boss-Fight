@@ -4,11 +4,23 @@ using UnityEngine;
 
 public class PuffOut : MonoBehaviour
 {
+    [SerializeField] private bool isDoublePuff;
+
+    [Space]
+
     [SerializeField] private float moveSpeed;
     [SerializeField] private float maxTime;
 
     private float currentSpeed;
-    private int directionOfTravel;
+
+    [SerializeField] private int directionOfTravel;
+
+    private void Start()
+    {
+        //if not a double puff, the other scripts will call the 'PuffSetup' method
+        if (isDoublePuff)
+            PuffSetup(directionOfTravel);
+    }
 
     //constructor
     public void PuffSetup (int direction)
@@ -29,6 +41,14 @@ public class PuffOut : MonoBehaviour
 
         //when it's slowed down enough (maxTime), destroy it
         if (currentSpeed < 0.2f)
+            DestroyTheObject();
+    }
+
+    private void DestroyTheObject()
+    {
+        if (isDoublePuff)
+            Destroy(transform.parent.gameObject);
+        else
             Destroy(gameObject);
     }
 }

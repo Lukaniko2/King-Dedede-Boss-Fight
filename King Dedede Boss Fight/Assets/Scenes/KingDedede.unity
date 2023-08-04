@@ -359,11 +359,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5104985669869888168, guid: b4579495ff2f411498859cf29f869fc1, type: 3}
       propertyPath: _boundGraphSource._translation.x
-      value: -198
+      value: 1140
       objectReference: {fileID: 0}
     - target: {fileID: 5104985669869888168, guid: b4579495ff2f411498859cf29f869fc1, type: 3}
       propertyPath: _boundGraphSource._translation.y
-      value: -740
+      value: -1071
       objectReference: {fileID: 0}
     - target: {fileID: 5104985669869888175, guid: b4579495ff2f411498859cf29f869fc1, type: 3}
       propertyPath: m_RootOrder

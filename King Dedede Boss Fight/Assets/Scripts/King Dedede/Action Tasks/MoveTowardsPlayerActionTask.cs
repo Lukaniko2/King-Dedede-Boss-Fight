@@ -10,7 +10,7 @@ namespace NodeCanvas.Tasks.Actions{
         public float distanceThreshold;
         private Vector2 playerTransform = Vector2.zero;
 		public float speed;
-	
+		private float speedMultiplier;
 
 		protected override string OnInit(){
 			return null;
@@ -20,6 +20,7 @@ namespace NodeCanvas.Tasks.Actions{
 		protected override void OnExecute(){
 
 			playerTransform = blackboard.GetVariableValue<Vector2>("player_position");
+            speedMultiplier = blackboard.GetVariableValue<float>("auto_speed");
 
 		}
 
@@ -37,7 +38,7 @@ namespace NodeCanvas.Tasks.Actions{
 
             int directionOfTravel = (int)Mathf.Sign(dir.x);
 
-			pos.x += speed * directionOfTravel * Time.deltaTime;
+			pos.x += speed * speedMultiplier * directionOfTravel * Time.deltaTime;
 
 			agent.transform.position = pos;
 
